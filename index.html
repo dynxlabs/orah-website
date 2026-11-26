@@ -132,9 +132,35 @@
           <div class="prd-screen prd-screen-agenda" id="prd-screen">
             <div class="prd-screen-head"><span>Clínica Sonrisa</span><b id="prd-screen-title">Agenda</b></div>
             <div id="prd-screen-body">
-              <div class="prd-agenda" aria-hidden="true">
-                <div class="prd-days"><span>LU 12</span><span>MA 13</span><span>MI 14</span><span>JU 15</span></div>
-                <div class="prd-slots"><span>09:00</span><i class="a"></i><i></i><span>11:00</span><i class="b"></i><i class="c"></i><span>13:00</span><i></i><i class="a"></i></div>
+              <div class="prd-ag" aria-hidden="true">
+                <aside class="prd-ag-side">
+                  <div class="prd-ag-month">Noviembre<small>2026</small></div>
+                  <div class="prd-ag-grp"><h5>Servicios<span>Esta semana</span></h5>
+                    <div class="prd-ag-row"><i class="sq c-con"></i>Consulta general<b>6</b></div>
+                    <div class="prd-ag-row"><i class="sq c-lim"></i>Limpieza dental<b>5</b></div>
+                    <div class="prd-ag-row"><i class="sq c-bla"></i>Blanqueamiento<b>4</b></div>
+                  </div>
+                  <div class="prd-ag-grp"><h5>Profesionales</h5>
+                    <div class="prd-ag-row"><i class="av">AR</i>Dra. Ana Rivas<b>10</b></div>
+                    <div class="prd-ag-row"><i class="av alt">LF</i>Dr. Luis Fuentes<b>5</b></div>
+                  </div>
+                </aside>
+                <div class="prd-ag-cal">
+                  <div class="prd-ag-wkh"><span></span><span>Lun 23</span><span>Mar 24</span><span>Mié 25</span><span class="on">Jue 26</span><span>Vie 27</span></div>
+                  <div class="prd-ag-grid">
+                    <span class="todaycol" style="grid-column:5;grid-row:1/4"></span>
+                    <span class="hr" style="grid-row:1">09</span><span class="hr" style="grid-row:2">11</span><span class="hr" style="grid-row:3">13</span>
+                    <span class="ev c-lim" style="grid-column:2;grid-row:1">09:00</span>
+                    <span class="ev c-con" style="grid-column:2;grid-row:2">11:00</span>
+                    <span class="ev c-con" style="grid-column:3;grid-row:1">08:30</span>
+                    <span class="ev c-lim" style="grid-column:3;grid-row:2">10:00</span>
+                    <span class="ev c-bla" style="grid-column:4;grid-row:2">09:30</span>
+                    <span class="ev c-bla" style="grid-column:5;grid-row:1">08:00</span>
+                    <span class="ev c-con" style="grid-column:5;grid-row:3">12:00</span>
+                    <span class="ev c-lim" style="grid-column:6;grid-row:1">10:00</span>
+                    <span class="ev c-bla" style="grid-column:6;grid-row:2">11:00</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -147,12 +173,12 @@
       </div>
 
       <div class="prd-feature-list">
-        <article class="prd-feature" id="agenda"><div class="prd-feature-heading"><h3>Agenda del negocio</h3></div><p>Consulta las reservas de la semana y organiza la atención del equipo en una vista común.</p></article>
-        <article class="prd-feature" id="reservas"><div class="prd-feature-heading"><h3>Reservas online</h3></div><p>Comparte una página pública para que tus clientes exploren servicios y soliciten una hora.</p></article>
-        <article class="prd-feature" id="equipo"><div class="prd-feature-heading"><h3>Servicios y equipo</h3></div><p>Mantén a mano la oferta de tu negocio y las personas que la atienden. La gestión multi-sucursal aún no está disponible.</p></article>
-        <article class="prd-feature" id="reportes"><div class="prd-feature-heading"><h3>Actividad y reportes</h3></div><p>Revisa indicadores de ejemplo para entender cómo se presenta la actividad de la agenda.</p></article>
-        <article class="prd-feature" id="automatizaciones"><div class="prd-feature-heading"><h3>Recordatorios por WhatsApp</h3><span>En desarrollo</span></div><p>La integración con WhatsApp está prevista; todavía no está disponible en la demostración actual.</p></article>
-        <article class="prd-feature" id="pagos"><div class="prd-feature-heading"><h3>Pagos y señas</h3><span>No disponible</span></div><p>Todavía no está disponible en la demostración actual; su alcance está pendiente de definición.</p></article>
+        <article class="prd-feature on" id="agenda"><span class="prd-feat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><h3>Agenda del negocio</h3></div><p>Consulta las reservas de la semana y organiza la atención del equipo en una vista común.</p></article>
+        <article class="prd-feature" id="reservas"><span class="prd-feat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg><h3>Reservas online</h3></div><p>Comparte una página pública para que tus clientes exploren servicios y soliciten una hora.</p></article>
+        <article class="prd-feature" id="equipo"><span class="prd-feat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.3"/><path d="M3.5 20c.6-3.3 2.8-5.2 5.5-5.2S14 16.7 14.5 20"/><path d="M15.5 5.1a3.3 3.3 0 0 1 0 6.3M16 14.9c2.3.4 4 2.2 4.5 5.1"/></svg><h3>Servicios y equipo</h3></div><p>Mantén a mano la oferta de tu negocio y las personas que la atienden. La gestión multi-sucursal aún no está disponible.</p></article>
+        <article class="prd-feature" id="reportes"><span class="prd-feat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6.5 20v-6M12 20V7M17.5 20v-9"/></svg><h3>Actividad y reportes</h3></div><p>Revisa indicadores de ejemplo para entender cómo se presenta la actividad de la agenda.</p></article>
+        <article class="prd-feature" id="automatizaciones"><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.5L3.5 21l1.5-4.3A8.5 8.5 0 1 1 20.5 12z"/></svg><h3>Recordatorios por WhatsApp</h3><span>En desarrollo</span></div><p>La integración con WhatsApp está prevista; todavía no está disponible en la demostración actual.</p></article>
+        <article class="prd-feature" id="pagos"><div class="prd-feature-heading"><svg class="prd-feat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg><h3>Pagos y señas</h3><span>No disponible</span></div><p>Todavía no está disponible en la demostración actual; su alcance está pendiente de definición.</p></article>
       </div>
     </div>
 
