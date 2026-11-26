@@ -1,0 +1,29 @@
+# robots.txt — DYNX Orah
+# https://useorah.com
+
+User-agent: *
+Allow: /
+
+# CSS, JS e imágenes deben seguir siendo rastreables para que Google renderice las páginas.
+
+# Crawlers de entrenamiento: bloqueados.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Crawlers de búsqueda y citación: permitidos.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Sitemap: se añadirá al publicar la landing (https://useorah.com/sitemap.xml)

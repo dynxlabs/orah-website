@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll). El sitio es HTML estático; este archivo solo evita que
+# se publiquen los archivos del repositorio que no forman parte del sitio.
+# Jekyll ya ignora lo que empieza con "." o "_" (como .github/).
+exclude:
+  - README.md
+  - node_modules/
+
+# Incluir .well-known/ para servir archivos como security.txt (RFC 9116).
+include:
+  - .well-known
