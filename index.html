@@ -3,44 +3,193 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- TEMPORAL: placeholder mientras se monta el sitio. Quitar al publicar la landing real. -->
+  <!-- TEMPORAL: noindex mientras validamos el portado. Quitar al publicar oficialmente. -->
   <meta name="robots" content="noindex">
   <title>Orah — Reservas que se llenan solas</title>
-  <meta name="description" content="Orah convierte tu disponibilidad en reservas confirmadas. Plataforma de reservas y agendamiento de DYNX Labs.">
+  <meta name="description" content="Orah convierte tu disponibilidad en reservas confirmadas: sin llamadas, sin planillas, sin horas perdidas. La plataforma de reservas de DYNX Labs.">
   <meta name="theme-color" content="#0e5e68">
   <link rel="icon" type="image/svg+xml" href="/assets/icons/logo-square.svg">
+  <link rel="canonical" href="https://useorah.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://useorah.com/">
+  <meta property="og:title" content="Orah — Reservas que se llenan solas">
+  <meta property="og:description" content="Orah convierte tu disponibilidad en reservas confirmadas: sin llamadas, sin planillas, sin horas perdidas.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <style>
-    :root{--acc:#0e5e68;--page:#edeff2;--surface:#ffffff;--ink:#141b22;--muted:#5e6873;--line:#e7eaee;}
-    @media(prefers-color-scheme:dark){:root{--acc:#4FB3BF;--page:#0d1117;--surface:#161b22;--ink:#e6edf3;--muted:#8b97a3;--line:#28313c;}}
-    *{box-sizing:border-box;}
-    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center;
-      color:var(--ink);font-family:Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
-      background:
-        radial-gradient(ellipse at 15% 10%,color-mix(in srgb,var(--acc) 13%,transparent),transparent 45%),
-        radial-gradient(ellipse at 85% 92%,color-mix(in srgb,var(--acc) 9%,transparent),transparent 45%),
-        var(--page);}
-    .card{max-width:460px;}
-    .logo{height:48px;width:auto;}
-    h1{margin:30px 0 0;font-size:clamp(27px,5vw,38px);font-weight:300;letter-spacing:-.045em;line-height:1.12;}
-    h1 b{font-weight:700;} h1 .ac{color:var(--acc);font-weight:600;}
-    p{margin:18px auto 0;max-width:360px;color:var(--muted);font-size:15px;line-height:1.6;}
-    .tag{display:inline-flex;align-items:center;gap:9px;margin-top:28px;padding:9px 16px;border-radius:999px;
-      border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;color:var(--muted);}
-    .tag i{width:8px;height:8px;border-radius:50%;background:var(--acc);}
-    footer{margin-top:36px;font-size:12.5px;color:var(--muted);}
-    footer a{color:var(--acc);font-weight:600;text-decoration:none;}
+    [hidden]{display:none !important;}
+    .mm-lang a{padding:4px 11px;border-radius:999px;color:var(--muted);font-size:12px;font-weight:600;text-decoration:none;transition:.15s;}
+    .mm-lang a.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.16);}
   </style>
 </head>
 <body>
-  <main class="card">
-    <img class="logo" src="/assets/icons/logo.svg" alt="Orah">
-    <h1>Reservas <b>que se llenan solas,</b> con <span class="ac">Orah</span></h1>
-    <p>Estamos construyendo la web de Orah. Muy pronto, aquí.</p>
-    <div class="tag"><i></i>Sitio en construcción</div>
-    <footer>Un producto de <a href="https://dynxlabs.com">DYNX Labs</a></footer>
-  </main>
+
+<!-- ───────────── Header (mega-menú) ───────────── -->
+<header class="mm" id="mm">
+  <div class="mm-inner">
+    <div class="mm-left">
+      <a href="/" class="mm-logo" aria-label="Orah"><img src="/assets/icons/logo.svg" alt="Orah"></a>
+      <nav class="mm-nav" aria-label="Navegación principal" id="mm-nav">
+        <button type="button" class="mm-navbtn" data-menu="producto" aria-expanded="false">Producto</button>
+        <button type="button" class="mm-navbtn" data-menu="rubros" aria-expanded="false">Rubros</button>
+        <button type="button" class="mm-navbtn" data-menu="precios" aria-expanded="false">Precios</button>
+        <button type="button" class="mm-navbtn" data-menu="recursos" aria-expanded="false">Recursos</button>
+      </nav>
+      <button type="button" class="mm-icon mm-search-btn" aria-label="Buscar" title="Buscar" id="mm-search-open">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="mm-actions">
+      <div class="mm-lang" role="group" aria-label="Idioma">
+        <a class="on" aria-current="true" href="/">ES</a>
+        <a href="/en/">EN</a>
+        <a href="/pt-br/">PT</a>
+      </div>
+      <button type="button" class="mm-icon mm-theme" aria-label="Cambiar tema" id="mm-theme">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="mm-burger" aria-label="Menú" aria-expanded="false" id="mm-burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <!-- Mega-panel -->
+  <div class="mm-mega" id="mm-mega">
+    <div class="mm-mega-inner" id="mm-mega-inner"></div>
+  </div>
+</header>
+<div class="mm-backdrop" id="mm-backdrop" hidden></div>
+
+<!-- Drawer móvil -->
+<div class="mm-drawer" id="mm-drawer"></div>
+
+<!-- Buscador -->
+<div class="mm-search" id="mm-search" hidden>
+  <div class="mm-search-box">
+    <div class="mm-search-top">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-linecap="round"/></svg>
+      <input id="mm-search-input" placeholder="Buscar en Orah…" aria-label="Buscar en Orah">
+      <button type="button" class="mm-esc" id="mm-search-close">Esc</button>
+    </div>
+    <div class="mm-results" id="mm-results"></div>
+  </div>
+</div>
+
+<!-- ───────────── Hero ───────────── -->
+<section class="lp">
+  <div class="lp-amb" aria-hidden="true"></div>
+  <div class="lp-hero">
+    <div class="lp-copy" id="lp-copy">
+      <div class="lp-eyebrow">Agendamiento, en movimiento</div>
+      <h1 class="lp-h1">
+        <span class="l">Reservas</span>
+        <span class="l st">que se llenan</span>
+        <span class="l st">solas,</span>
+        <span class="l">con <span class="ac">Orah</span></span>
+      </h1>
+      <p class="lp-desc">Orah convierte tu disponibilidad en reservas confirmadas: sin llamadas, sin planillas, sin horas perdidas.</p>
+      <div class="lp-acts">
+        <a class="lp-btn" href="#producto">Ver Orah en acción
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h9M8 3l5 5-5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="lp-link" href="#producto">Reservar una hora ↗</a>
+      </div>
+      <div class="lp-dots" id="lp-dots">
+        <button aria-label="Mensaje 1" aria-current="true"></button>
+        <button aria-label="Mensaje 2"></button>
+        <button aria-label="Mensaje 3"></button>
+        <button aria-label="Mensaje 4"></button>
+      </div>
+    </div>
+    <div class="lp-visual" id="lp-visual"><canvas id="orb-canvas"></canvas></div>
+  </div>
+</section>
+
+<!-- ───────────── Producto ───────────── -->
+<section class="prd-section" id="producto" aria-labelledby="prd-heading">
+  <div class="prd-inner">
+    <div class="prd-intro">
+      <span class="prd-eyebrow">EL PRODUCTO</span>
+      <h2 id="prd-heading">Una agenda más clara para un negocio que no se detiene.</h2>
+      <p>Orah reúne la agenda del negocio y la experiencia de reserva en un mismo lugar. Explora cómo se organiza cada parte en esta demostración con datos de ejemplo.</p>
+    </div>
+
+    <div class="prd-showcase">
+      <div class="prd-preview">
+        <div class="prd-tabs" role="group" aria-label="Explorar vistas del producto" id="prd-tabs">
+          <button type="button" aria-pressed="true" data-view="agenda">Agenda</button>
+          <button type="button" aria-pressed="false" data-view="reservas">Reservas online</button>
+          <button type="button" aria-pressed="false" data-view="gestion">Gestión</button>
+          <button type="button" aria-pressed="false" data-view="reportes">Reportes</button>
+        </div>
+        <div class="prd-window" role="img" aria-label="Vista de demostración" id="prd-window">
+          <div class="prd-windowbar" aria-hidden="true"><i></i><i></i><i></i><span>orah.app</span></div>
+          <div class="prd-screen prd-screen-agenda" id="prd-screen">
+            <div class="prd-screen-head"><span>Clínica Sonrisa</span><b id="prd-screen-title">Agenda</b></div>
+            <div id="prd-screen-body">
+              <div class="prd-agenda" aria-hidden="true">
+                <div class="prd-days"><span>LU 12</span><span>MA 13</span><span>MI 14</span><span>JU 15</span></div>
+                <div class="prd-slots"><span>09:00</span><i class="a"></i><i></i><span>11:00</span><i class="b"></i><i class="c"></i><span>13:00</span><i></i><i class="a"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prd-preview-copy" aria-live="polite">
+          <strong id="prd-copy-title">Tu semana, de un vistazo</strong>
+          <span id="prd-copy-detail">Reservas organizadas por día y profesional.</span>
+        </div>
+        <p class="prd-demo-note">Vista ilustrativa · demostración con datos de ejemplo</p>
+      </div>
+
+      <div class="prd-feature-list">
+        <article class="prd-feature" id="agenda"><div class="prd-feature-heading"><h3>Agenda del negocio</h3></div><p>Consulta las reservas de la semana y organiza la atención del equipo en una vista común.</p></article>
+        <article class="prd-feature" id="reservas"><div class="prd-feature-heading"><h3>Reservas online</h3></div><p>Comparte una página pública para que tus clientes exploren servicios y soliciten una hora.</p></article>
+        <article class="prd-feature" id="equipo"><div class="prd-feature-heading"><h3>Servicios y equipo</h3></div><p>Mantén a mano la oferta de tu negocio y las personas que la atienden. La gestión multi-sucursal aún no está disponible.</p></article>
+        <article class="prd-feature" id="reportes"><div class="prd-feature-heading"><h3>Actividad y reportes</h3></div><p>Revisa indicadores de ejemplo para entender cómo se presenta la actividad de la agenda.</p></article>
+        <article class="prd-feature" id="automatizaciones"><div class="prd-feature-heading"><h3>Recordatorios por WhatsApp</h3><span>En desarrollo</span></div><p>La integración con WhatsApp está prevista; todavía no está disponible en la demostración actual.</p></article>
+        <article class="prd-feature" id="pagos"><div class="prd-feature-heading"><h3>Pagos y señas</h3><span>No disponible</span></div><p>Todavía no está disponible en la demostración actual; su alcance está pendiente de definición.</p></article>
+      </div>
+    </div>
+
+    <div class="prd-actions">
+      <a href="#producto" class="prd-primary-link">Conoce el producto <span aria-hidden="true">↗</span></a>
+      <a href="#producto" class="prd-secondary-link">Explorar la demostración</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── Footer ───────────── -->
+<footer class="ftr" id="contacto">
+  <div class="ftr-inner">
+    <div class="ftr-grid">
+      <div class="ftr-brand">
+        <a href="/" class="ftr-logo" aria-label="Orah"><img src="/assets/icons/logo.svg" alt="Orah"></a>
+        <p class="ftr-product">A <a class="ftr-dynx" href="https://dynxlabs.com" target="_blank" rel="noopener noreferrer">DYNX Labs</a> Product</p>
+        <p class="ftr-tag">Agenda más. Trabaja menos. La plataforma de reservas de <a class="ftr-dynx" href="https://dynxlabs.com" target="_blank" rel="noopener noreferrer">DYNX Labs</a> para que tu negocio se llene solo.</p>
+        <div class="ftr-social">
+          <a href="https://www.linkedin.com/company/dynxlabs" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://www.instagram.com/dynx.labs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://x.com/dynxlabs" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+          <a href="https://wa.me/56984657801" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+        </div>
+      </div>
+      <div class="ftr-col"><h3 class="ftr-ct">Producto</h3><ul class="ftr-links"><li><a href="#producto">Agenda</a></li><li><a href="#producto">Página de reservas</a></li><li><a href="#producto">Recordatorios por WhatsApp</a></li><li><a href="#producto">Pagos y señas</a></li><li><a href="#producto">Equipo y multi-sucursal</a></li><li><a href="#producto">Reportes</a></li></ul></div>
+      <div class="ftr-col"><h3 class="ftr-ct">Rubros</h3><ul class="ftr-links"><li><a href="#producto">Clínicas y dental</a></li><li><a href="#producto">Estética y spa</a></li><li><a href="#producto">Hospedaje</a></li><li><a href="#producto">Barbería y peluquería</a></li><li><a href="#producto">Servicios profesionales</a></li></ul></div>
+      <div class="ftr-col"><h3 class="ftr-ct">Recursos</h3><ul class="ftr-links"><li><a href="#recursos">Guías</a></li><li><a href="#recursos">Centro de ayuda</a></li><li><a href="#recursos">Casos de éxito</a></li></ul></div>
+      <div class="ftr-col"><h3 class="ftr-ct">Legal</h3><ul class="ftr-links"><li><a href="#privacidad">Privacidad</a></li><li><a href="#terminos">Términos</a></li><li><a href="#cookies">Cookies</a></li></ul></div>
+    </div>
+    <div class="ftr-bottom">
+      <p class="ftr-copy">© 2026 Orah · <a class="ftr-dynx" href="https://dynxlabs.com" target="_blank" rel="noopener noreferrer">DYNX Labs</a>. Todos los derechos reservados.</p>
+      <div class="ftr-end">
+        <a class="ftr-panel" href="https://app.useorah.com" rel="noopener">Ingresar al panel ↗</a>
+        <a class="ftr-startcta" href="#producto">Ver demo ↗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/orb.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
