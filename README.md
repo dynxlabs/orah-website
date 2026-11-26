@@ -220,8 +220,8 @@ Founder & CEO
 
 | Rol | Responsable |
 |---|---|
-| Ingeniería y Arquitectura de Producto | Claude Code |
-| QA & Performance | Claude Code |
+| Ingeniería Líder & Arquitecta de Producto | Lyra (Claude Code) |
+| QA & Performance | Lyra (Claude Code) |
 | Aprobación y dirección de producto | Arois Monsalve |
 
 ---
