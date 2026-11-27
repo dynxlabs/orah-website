@@ -73,19 +73,19 @@
   const MENU = [
     { id: "producto", label: "Producto", pk: "Qué incluye",
       primary: [
-        { t: "Agenda", href: "#producto" }, { t: "Página de reservas", href: "#producto" },
-        { t: "Recordatorios por WhatsApp", href: "#producto" }, { t: "Pagos y señas", href: "#producto" },
-        { t: "Equipo y multi-sucursal", href: "#producto" }, { t: "Reportes", href: "#producto" }],
-      sk: "Empieza", secondary: [{ t: "Ver demo", href: "#producto", arrow: true }, { t: "Reservar una hora", href: "#producto", arrow: true }] },
+        { t: "Agenda", href: "/producto/" }, { t: "Página de reservas", href: "/producto/" },
+        { t: "Recordatorios por WhatsApp", href: "/producto/" }, { t: "Pagos y señas", href: "/producto/" },
+        { t: "Equipo y multi-sucursal", href: "/producto/" }, { t: "Reportes", href: "/producto/" }],
+      sk: "Empieza", secondary: [{ t: "Ver demo", href: "/#producto", arrow: true }, { t: "Reservar una hora", href: "/#producto", arrow: true }] },
     { id: "rubros", label: "Rubros", pk: "Para quién",
-      primary: [{ t: "Clínicas y dental", href: "#producto" }, { t: "Estética y spa", href: "#producto" }, { t: "Hospedaje", href: "#producto" }, { t: "Barbería y peluquería", href: "#producto" }, { t: "Servicios profesionales", href: "#producto" }],
-      sk: "¿No está tu rubro?", secondary: [{ t: "Hablemos", href: "#contacto", arrow: true }] },
+      primary: [{ t: "Clínicas y dental", href: "/#producto" }, { t: "Estética y spa", href: "/#producto" }, { t: "Hospedaje", href: "/#producto" }, { t: "Barbería y peluquería", href: "/#producto" }, { t: "Servicios profesionales", href: "/#producto" }],
+      sk: "¿No está tu rubro?", secondary: [{ t: "Hablemos", href: "/#contacto", arrow: true }] },
     { id: "precios", label: "Precios", pk: "Planes",
-      primary: [{ t: "Ver planes", href: "#producto" }, { t: "Comparar planes", href: "#producto" }],
-      sk: "Dudas", secondary: [{ t: "Preguntas frecuentes", href: "#producto", arrow: true }] },
+      primary: [{ t: "Ver planes", href: "/#producto" }, { t: "Comparar planes", href: "/#producto" }],
+      sk: "Dudas", secondary: [{ t: "Preguntas frecuentes", href: "/#producto", arrow: true }] },
     { id: "recursos", label: "Recursos", pk: "Aprende",
-      primary: [{ t: "Guías", href: "#recursos" }, { t: "Centro de ayuda", href: "#recursos" }, { t: "Casos de éxito", href: "#recursos" }],
-      sk: "Soporte", secondary: [{ t: "Contacto", href: "#contacto", arrow: true }] },
+      primary: [{ t: "Guías", href: "/#recursos" }, { t: "Centro de ayuda", href: "/#recursos" }, { t: "Casos de éxito", href: "/#recursos" }],
+      sk: "Soporte", secondary: [{ t: "Contacto", href: "/#contacto", arrow: true }] },
   ];
   const ARROW = '<svg viewBox="0 0 24 24" fill="none" class="mm-ic"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 

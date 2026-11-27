@@ -29,5 +29,14 @@
 - Mockup `docs/mockup-producto.html` aprobado por Arois → implementado en `producto/index.html` (se sirve en `useorah.com/producto/`).
 - Posicionamiento multicanal: hero "**Tu cliente escribe; Orah agenda.**", sección **Aria** (en desarrollo) con 6 canales activables, **Disponible hoy** (6 capacidades con estado real), **Próximamente** (multi-sucursal, recordatorios WhatsApp, pagos y señas), CTA y footer.
 - Reutiliza `site.css` (`prd-*`) y Figtree; tema claro/oscuro con la clave `orah-theme` (igual que la landing); showcase interactivo de 4 vistas; **DYNX Labs** enlazado. Mantiene `noindex` temporal (quitar al publicar).
-- Revisado a ojo en local (claro/oscuro/móvil), sin errores de consola ni recortes. **Pendiente: commit + push.**
+- Revisado a ojo en local (claro/oscuro/móvil), sin errores de consola ni recortes.
+- **Publicado:** `useorah.com/producto/` en vivo (commit `a535214`).
+- Detalle en `BITACORA.md` (entrada 2026-11-27).
+
+### WEB-03 · Mega-menú estándar en todas las páginas
+**Decisión de Arois (2026-11-27):** el mega-menú de la landing es la **cabecera estándar** de todas las páginas que creemos, **idéntico**.
+
+- Implementado en `/producto/` (reemplaza su header propio por el mega-menú + `site.js`).
+- Enlaces del menú actualizados en todo el sitio (`site.js`): a raíz (`/#sección`) para que naveguen desde cualquier página; las entradas de "Producto" llevan a `/producto/`.
+- **Regla para páginas nuevas:** usar este mismo header (mega-menú + `site.js`), no un header propio.
 - Detalle en `BITACORA.md` (entrada 2026-11-27).

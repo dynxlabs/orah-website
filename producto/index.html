@@ -17,19 +17,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Aplica el tema guardado antes de pintar (evita parpadeo). -->
-  <script>try{var _t=localStorage.getItem('orah-theme');if(_t==='light'||_t==='dark')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
   <link rel="stylesheet" href="/assets/css/site.css">
   <style>
     :root{--font-sans:'Figtree';}
     *{box-sizing:border-box;}
     body{margin:0;font-family:var(--font-sans),system-ui,sans-serif;background:var(--page);color:var(--ink);}
-    button,input,a{font-family:inherit;}
-
-    /* Botón de tema del encabezado de producto */
-    .prd-theme-btn{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink2);cursor:pointer;transition:.15s;}
-    .prd-theme-btn:hover{color:var(--ink);}
-    .prd-theme-btn svg{width:17px;height:17px;}
+    button,input,select,textarea{font-family:inherit;}
+    /* El mega-menú es position:fixed (64px); las anclas internas caen debajo de él. */
+    html{scroll-padding-top:80px;}
+    [hidden]{display:none !important;}
+    .mm-lang a{padding:4px 11px;border-radius:999px;color:var(--muted);font-size:12px;font-weight:600;text-decoration:none;transition:.15s;}
+    .mm-lang a.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.16);}
 
     /* ===== Aria · reserva multicanal ===== */
     .mk-aria{padding:clamp(60px,8vw,104px) clamp(24px,5vw,72px);background:color-mix(in srgb,var(--acc) 5%,var(--page));border-top:1px solid var(--line);}
@@ -51,25 +49,58 @@
   </style>
 </head>
 <body>
-<div class="prd-page">
 
-  <!-- Header -->
-  <header class="prd-site-header">
-    <div class="prd-site-header-inner">
-      <a class="prd-site-logo" href="/" aria-label="Orah, inicio"><img src="/assets/icons/logo.svg" alt="Orah"></a>
-      <nav aria-label="Navegación de producto">
-        <a href="#aria">Aria</a>
-        <a href="#capacidades">Capacidades</a>
-        <a href="#roadmap">Próximamente</a>
+<!-- ───────────── Header (mega-menú) — idéntico a la landing ───────────── -->
+<header class="mm" id="mm">
+  <div class="mm-inner">
+    <div class="mm-left">
+      <a href="/" class="mm-logo" aria-label="Orah"><img src="/assets/icons/logo.svg" alt="Orah"></a>
+      <nav class="mm-nav" aria-label="Navegación principal" id="mm-nav">
+        <button type="button" class="mm-navbtn" data-menu="producto" aria-expanded="false">Producto</button>
+        <button type="button" class="mm-navbtn" data-menu="rubros" aria-expanded="false">Rubros</button>
+        <button type="button" class="mm-navbtn" data-menu="precios" aria-expanded="false">Precios</button>
+        <button type="button" class="mm-navbtn" data-menu="recursos" aria-expanded="false">Recursos</button>
       </nav>
-      <div class="prd-site-actions">
-        <button id="theme-toggle" class="prd-theme-btn" type="button" aria-label="Cambiar tema">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <a class="prd-header-cta" href="/#producto">Explorar Orah <span aria-hidden="true">↗</span></a>
-      </div>
+      <button type="button" class="mm-icon mm-search-btn" aria-label="Buscar" title="Buscar" id="mm-search-open">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-linecap="round"/></svg>
+      </button>
     </div>
-  </header>
+    <div class="mm-actions">
+      <div class="mm-lang" role="group" aria-label="Idioma">
+        <a class="on" aria-current="true" href="/">ES</a>
+        <a href="/en/">EN</a>
+        <a href="/pt-br/">PT</a>
+      </div>
+      <button type="button" class="mm-icon mm-theme" aria-label="Cambiar tema" id="mm-theme">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="mm-burger" aria-label="Menú" aria-expanded="false" id="mm-burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <!-- Mega-panel -->
+  <div class="mm-mega" id="mm-mega">
+    <div class="mm-mega-inner" id="mm-mega-inner"></div>
+  </div>
+</header>
+<div class="mm-backdrop" id="mm-backdrop" hidden></div>
+
+<!-- Drawer móvil -->
+<div class="mm-drawer" id="mm-drawer"></div>
+
+<!-- Buscador -->
+<div class="mm-search" id="mm-search" hidden>
+  <div class="mm-search-box">
+    <div class="mm-search-top">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-linecap="round"/></svg>
+      <input id="mm-search-input" placeholder="Buscar en Orah…" aria-label="Buscar en Orah">
+      <button type="button" class="mm-esc" id="mm-search-close">Esc</button>
+    </div>
+    <div class="mm-results" id="mm-results"></div>
+  </div>
+</div>
+
+<div class="prd-page">
 
   <main>
     <!-- Hero -->
@@ -219,46 +250,6 @@
   </footer>
 </div>
 
-<script>
-(function(){
-  "use strict";
-  var root=document.documentElement;
-
-  /* Tema (claro/oscuro) — misma clave que la landing */
-  var btn=document.getElementById('theme-toggle');
-  if(btn)btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme');
-    var dark=cur==='dark'||(!cur&&matchMedia('(prefers-color-scheme: dark)').matches);
-    var next=dark?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('orah-theme',next);}catch(e){}
-  });
-
-  /* Showcase · pestañas (idéntico a la home) */
-  var VIEWS={
-    agenda:{title:"Agenda",copy:"Tu semana, de un vistazo",detail:"Reservas organizadas por día y profesional.",
-      body:'<div class="prd-ag" aria-hidden="true"><aside class="prd-ag-side"><div class="prd-ag-month">Noviembre<small>2026</small></div><div class="prd-ag-grp"><h5>Servicios<span>Esta semana</span></h5><div class="prd-ag-row"><i class="sq c-con"></i>Consulta general<b>6</b></div><div class="prd-ag-row"><i class="sq c-lim"></i>Limpieza dental<b>5</b></div><div class="prd-ag-row"><i class="sq c-bla"></i>Blanqueamiento<b>4</b></div></div><div class="prd-ag-grp"><h5>Profesionales</h5><div class="prd-ag-row"><i class="av">AR</i>Dra. Ana Rivas<b>10</b></div><div class="prd-ag-row"><i class="av alt">LF</i>Dr. Luis Fuentes<b>5</b></div></div></aside><div class="prd-ag-cal"><div class="prd-ag-wkh"><span></span><span>Lun 23</span><span>Mar 24</span><span>Mié 25</span><span class="on">Jue 26</span><span>Vie 27</span></div><div class="prd-ag-grid"><span class="todaycol" style="grid-column:5;grid-row:1/4"></span><span class="hr" style="grid-row:1">09</span><span class="hr" style="grid-row:2">11</span><span class="hr" style="grid-row:3">13</span><span class="ev c-lim" style="grid-column:2;grid-row:1">09:00</span><span class="ev c-con" style="grid-column:2;grid-row:2">11:00</span><span class="ev c-con" style="grid-column:3;grid-row:1">08:30</span><span class="ev c-lim" style="grid-column:3;grid-row:2">10:00</span><span class="ev c-bla" style="grid-column:4;grid-row:2">09:30</span><span class="ev c-bla" style="grid-column:5;grid-row:1">08:00</span><span class="ev c-con" style="grid-column:5;grid-row:3">12:00</span><span class="ev c-lim" style="grid-column:6;grid-row:1">10:00</span><span class="ev c-bla" style="grid-column:6;grid-row:2">11:00</span></div></div></div>'},
-    reservas:{title:"Reservas online",copy:"Una página para reservar",detail:"Tus clientes eligen un servicio y un horario disponible.",
-      body:'<div class="prd-bk" aria-hidden="true"><div class="prd-bk-head"><span class="prd-bk-logo">CS</span><span class="prd-bk-biz"><b>Clínica Dental Sonrisa</b><small>Abierto hoy · cierra a las 17:00</small></span></div><div class="prd-bk-prog"><i class="on"></i><i></i><i></i></div><div class="prd-bk-step">Paso 1 de 3</div><strong class="prd-bk-q">¿Qué necesitas?</strong><div class="prd-bk-chips"><span class="on">Todos</span><span>Consultas</span><span>Limpieza</span><span>Estética</span></div><div class="prd-bk-svc"><span class="prd-bk-dur">30<small>min</small></span><span class="prd-bk-nm"><b>Consulta general</b><small>Evaluación y diagnóstico</small></span><span class="prd-bk-pr">$25.000</span></div><div class="prd-bk-svc sel"><span class="prd-bk-dur">45<small>min</small></span><span class="prd-bk-nm"><b>Limpieza dental</b><small>Profilaxis y destartraje</small></span><span class="prd-bk-pr">$35.000</span><em class="prd-bk-ck">✓</em></div><div class="prd-bk-svc"><span class="prd-bk-dur">60<small>min</small></span><span class="prd-bk-nm"><b>Blanqueamiento</b><small>Sesión en clínica</small></span><span class="prd-bk-pr">$120.000</span></div><div class="prd-bk-bar"><span class="prd-bk-sel"><b>Limpieza dental</b><small>45 min · $35.000</small></span><button type="button" tabindex="-1">Continuar</button></div></div>'},
-    gestion:{title:"Gestión",copy:"Servicios y equipo conectados",detail:"Consulta quién atiende y qué ofrece tu negocio.",
-      body:'<div class="prd-tm" aria-hidden="true"><div class="prd-tm-head"><b>Equipo</b><small>3 profesionales · 3 boxes</small></div><div class="prd-tm-card"><span class="prd-avatar">AR</span><span class="prd-tm-info"><b>Dra. Ana Rivas</b><small>Odontología general · Box 1</small><span class="prd-tm-chips"><i class="c-con">Consulta</i><i class="c-lim">Limpieza</i><i class="c-bla">Blanqueamiento</i></span></span><span class="prd-tm-n"><b>9</b><small>esta semana</small></span></div><div class="prd-tm-card"><span class="prd-avatar alt">LF</span><span class="prd-tm-info"><b>Dr. Luis Fuentes</b><small>Endodoncista · Box 2</small><span class="prd-tm-chips"><i class="c-con">Consulta</i><i class="c-lim">Limpieza</i><i class="c-endo">Endodoncia</i></span></span><span class="prd-tm-n"><b>5</b><small>esta semana</small></span></div><div class="prd-tm-card"><span class="prd-avatar alt2">PS</span><span class="prd-tm-info"><b>Dra. Paula Soto</b><small>Ortodoncista · Box 3</small><span class="prd-tm-chips"><i class="c-orto">Ortodoncia</i><i class="c-orto">Control de ortodoncia</i></span></span><span class="prd-tm-n"><b>3</b><small>esta semana</small></span></div></div>'},
-    reportes:{title:"Reportes",copy:"Una lectura clara de la actividad",detail:"Explora indicadores de la agenda de demostración.",
-      body:'<div class="prd-rp" aria-hidden="true"><div class="prd-rp-kpis"><div><small>Reservas semana</small><b>15</b></div><div><small>Ingresos est.</small><b>$805.000</b></div><div><small>Nuevos · nov</small><b>2</b></div><div><small>Ocupación</small><b>59%</b></div></div><div class="prd-rp-box"><h6>Reservas por día<span>15 esta semana</span></h6><div class="prd-rp-days"><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>L</em></span><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>M</em></span><span class="prd-rp-day"><b>2</b><s class="tr"><s class="fl" style="height:67%"></s></s><em>M</em></span><span class="prd-rp-day on"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>J</em></span><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>V</em></span><span class="prd-rp-day"><b>1</b><s class="tr"><s class="fl" style="height:33%"></s></s><em>S</em></span><span class="prd-rp-day"><b>0</b><s class="tr"><s class="fl" style="height:5%"></s></s><em>D</em></span></div></div><div class="prd-rp-box"><h6>Reservas por servicio<span>3 servicios</span></h6><div class="prd-rp-row c-con"><span class="rl"><i></i>Consulta general</span><span class="rt"><s style="width:100%"></s></span><b>6</b></div><div class="prd-rp-row c-lim"><span class="rl"><i></i>Limpieza dental</span><span class="rt"><s style="width:83%"></s></span><b>5</b></div><div class="prd-rp-row c-bla"><span class="rl"><i></i>Blanqueamiento</span><span class="rt"><s style="width:67%"></s></span><b>4</b></div></div></div>'},
-  };
-  var tabs=Array.prototype.slice.call(document.querySelectorAll('#prd-tabs button')),
-      screen=document.getElementById('prd-screen'),
-      title=document.getElementById('prd-screen-title'),
-      body=document.getElementById('prd-screen-body'),
-      ctitle=document.getElementById('prd-copy-title'),
-      cdetail=document.getElementById('prd-copy-detail');
-  tabs.forEach(function(b){b.addEventListener('click',function(){
-    var id=b.dataset.view,v=VIEWS[id];if(!v)return;
-    tabs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-    screen.className='prd-screen prd-screen-'+id;
-    title.textContent=v.title;body.innerHTML=v.body;
-    ctitle.textContent=v.copy;cdetail.textContent=v.detail;
-  });});
-})();
-</script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
