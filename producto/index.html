@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TEMPORAL: noindex mientras validamos el portado. Quitar al publicar oficialmente. -->
+  <meta name="robots" content="noindex">
+  <title>Producto — Orah: agenda, reservas y reserva multicanal</title>
+  <meta name="description" content="Conoce Orah: agenda del negocio, página pública de reservas y Aria, la IA que agenda conversando por WhatsApp, Instagram, Telegram y más. Demostración disponible; nuevas capacidades en desarrollo.">
+  <meta name="theme-color" content="#0e5e68">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/logo-square.svg">
+  <link rel="canonical" href="https://useorah.com/producto/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://useorah.com/producto/">
+  <meta property="og:title" content="Producto — Orah: agenda, reservas y reserva multicanal">
+  <meta property="og:description" content="Agenda del negocio, página pública de reservas y Aria, la IA que agenda por WhatsApp, Instagram, Telegram y más.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Aplica el tema guardado antes de pintar (evita parpadeo). -->
+  <script>try{var _t=localStorage.getItem('orah-theme');if(_t==='light'||_t==='dark')document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    :root{--font-sans:'Figtree';}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:var(--font-sans),system-ui,sans-serif;background:var(--page);color:var(--ink);}
+    button,input,a{font-family:inherit;}
+
+    /* Botón de tema del encabezado de producto */
+    .prd-theme-btn{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink2);cursor:pointer;transition:.15s;}
+    .prd-theme-btn:hover{color:var(--ink);}
+    .prd-theme-btn svg{width:17px;height:17px;}
+
+    /* ===== Aria · reserva multicanal ===== */
+    .mk-aria{padding:clamp(60px,8vw,104px) clamp(24px,5vw,72px);background:color-mix(in srgb,var(--acc) 5%,var(--page));border-top:1px solid var(--line);}
+    .mk-aria-inner{width:100%;max-width:1200px;margin-inline:auto;display:grid;grid-template-columns:1fr .95fr;align-items:center;gap:clamp(32px,5vw,76px);}
+    .mk-aria-copy h2{margin:16px 0 0;max-width:13ch;color:var(--ink);font-size:clamp(30px,3.8vw,46px);font-weight:600;letter-spacing:-.04em;line-height:1.07;}
+    .mk-aria-copy > p{max-width:48ch;margin:18px 0 0;color:var(--muted);font-size:15px;line-height:1.7;}
+    .mk-aria-note{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:10px 14px;border:1px dashed color-mix(in srgb,var(--acc) 45%,var(--line));border-radius:11px;color:var(--ink2);font-size:12.5px;font-weight:600;}
+    .mk-aria-note svg{width:16px;height:16px;flex:none;color:var(--acc-text);}
+
+    .mk-chip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
+    .mk-chip{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:var(--surface);}
+    .mk-chip-ic{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--acc) 10%,var(--surface));color:var(--acc-text);}
+    .mk-chip-ic svg{width:19px;height:19px;}
+    .mk-chip-tx{min-width:0;display:grid;gap:1px;}
+    .mk-chip-tx b{color:var(--ink);font-size:13px;font-weight:700;}
+    .mk-chip-tx small{color:var(--muted);font-size:10px;}
+    @media (max-width:900px){.mk-aria-inner{grid-template-columns:1fr;}}
+    @media (max-width:440px){.mk-chip-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="prd-page">
+
+  <!-- Header -->
+  <header class="prd-site-header">
+    <div class="prd-site-header-inner">
+      <a class="prd-site-logo" href="/" aria-label="Orah, inicio"><img src="/assets/icons/logo.svg" alt="Orah"></a>
+      <nav aria-label="Navegación de producto">
+        <a href="#aria">Aria</a>
+        <a href="#capacidades">Capacidades</a>
+        <a href="#roadmap">Próximamente</a>
+      </nav>
+      <div class="prd-site-actions">
+        <button id="theme-toggle" class="prd-theme-btn" type="button" aria-label="Cambiar tema">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="prd-header-cta" href="/#producto">Explorar Orah <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="prd-page-hero" aria-labelledby="prd-title">
+      <div class="prd-page-hero-inner">
+        <div class="prd-page-copy">
+          <span class="prd-eyebrow">AGENDA · RESERVAS · IA MULTICANAL</span>
+          <h1 id="prd-title">Tu cliente escribe; Orah agenda.</h1>
+          <p>Orah suma a <strong>Aria</strong>, una IA que agenda 24/7 conversando por WhatsApp, Instagram, Telegram, chat web y más — conectada con la agenda, el equipo y los reportes de tu negocio.</p>
+          <div class="prd-page-actions">
+            <a class="prd-primary-link" href="/#producto">Explorar la demostración <span aria-hidden="true">↗</span></a>
+            <a class="prd-secondary-link" href="#capacidades">Ver cómo funciona ↓</a>
+          </div>
+          <p class="prd-page-disclosure">La versión actual es una demostración de interfaz; Aria y los recordatorios están en desarrollo. Las reservas de ejemplo no se guardan como operación real.</p>
+        </div>
+
+        <!-- Showcase interactivo (idéntico al de la home) -->
+        <div class="prd-preview">
+          <div class="prd-tabs" role="group" aria-label="Explorar vistas del producto" id="prd-tabs">
+            <button type="button" aria-pressed="true" data-view="agenda">Agenda</button>
+            <button type="button" aria-pressed="false" data-view="reservas">Reservas online</button>
+            <button type="button" aria-pressed="false" data-view="gestion">Gestión</button>
+            <button type="button" aria-pressed="false" data-view="reportes">Reportes</button>
+          </div>
+          <div class="prd-window" role="img" aria-label="Vista de demostración">
+            <div class="prd-windowbar" aria-hidden="true"><i></i><i></i><i></i><span>orah.app</span></div>
+            <div class="prd-screen prd-screen-agenda" id="prd-screen">
+              <div class="prd-screen-head"><span>Clínica Sonrisa</span><b id="prd-screen-title">Agenda</b></div>
+              <div id="prd-screen-body">
+                <div class="prd-ag" aria-hidden="true">
+                  <aside class="prd-ag-side">
+                    <div class="prd-ag-month">Noviembre<small>2026</small></div>
+                    <div class="prd-ag-grp"><h5>Servicios<span>Esta semana</span></h5>
+                      <div class="prd-ag-row"><i class="sq c-con"></i>Consulta general<b>6</b></div>
+                      <div class="prd-ag-row"><i class="sq c-lim"></i>Limpieza dental<b>5</b></div>
+                      <div class="prd-ag-row"><i class="sq c-bla"></i>Blanqueamiento<b>4</b></div>
+                    </div>
+                    <div class="prd-ag-grp"><h5>Profesionales</h5>
+                      <div class="prd-ag-row"><i class="av">AR</i>Dra. Ana Rivas<b>10</b></div>
+                      <div class="prd-ag-row"><i class="av alt">LF</i>Dr. Luis Fuentes<b>5</b></div>
+                    </div>
+                  </aside>
+                  <div class="prd-ag-cal">
+                    <div class="prd-ag-wkh"><span></span><span>Lun 23</span><span>Mar 24</span><span>Mié 25</span><span class="on">Jue 26</span><span>Vie 27</span></div>
+                    <div class="prd-ag-grid">
+                      <span class="todaycol" style="grid-column:5;grid-row:1/4"></span>
+                      <span class="hr" style="grid-row:1">09</span><span class="hr" style="grid-row:2">11</span><span class="hr" style="grid-row:3">13</span>
+                      <span class="ev c-lim" style="grid-column:2;grid-row:1">09:00</span>
+                      <span class="ev c-con" style="grid-column:2;grid-row:2">11:00</span>
+                      <span class="ev c-con" style="grid-column:3;grid-row:1">08:30</span>
+                      <span class="ev c-lim" style="grid-column:3;grid-row:2">10:00</span>
+                      <span class="ev c-bla" style="grid-column:4;grid-row:2">09:30</span>
+                      <span class="ev c-bla" style="grid-column:5;grid-row:1">08:00</span>
+                      <span class="ev c-con" style="grid-column:5;grid-row:3">12:00</span>
+                      <span class="ev c-lim" style="grid-column:6;grid-row:1">10:00</span>
+                      <span class="ev c-bla" style="grid-column:6;grid-row:2">11:00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="prd-preview-copy" aria-live="polite">
+            <strong id="prd-copy-title">Tu semana, de un vistazo</strong>
+            <span id="prd-copy-detail">Reservas organizadas por día y profesional.</span>
+          </div>
+          <p class="prd-demo-note">Vista ilustrativa · demostración con datos de ejemplo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aria · reserva multicanal -->
+    <section class="mk-aria" id="aria" aria-labelledby="prd-aria-title">
+      <div class="mk-aria-inner">
+        <div class="mk-aria-copy">
+          <span class="prd-eyebrow">IA MULTICANAL · EN DESARROLLO</span>
+          <h2 id="prd-aria-title">Aria agenda por ti, por todos tus canales.</h2>
+          <p>Aria es la recepcionista con IA de Orah: conversa con tus clientes, resuelve dudas y toma la reserva en el canal que ellos prefieran. Tú activas los canales que tu negocio necesita.</p>
+          <span class="mk-aria-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19"/></svg>
+            Activa los canales que necesites — tu plan se ajusta a ellos.
+          </span>
+        </div>
+        <div class="mk-chip-grid">
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.5L3.5 21l1.5-4.3A8.5 8.5 0 1 1 20.5 12z"/></svg></span><span class="mk-chip-tx"><b>WhatsApp</b><small>Mensajería</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span><span class="mk-chip-tx"><b>Instagram</b><small>Mensajes directos</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 10.8l5.2 1.9L10.3 20l3-4.1L19 19z"/><path d="m8.2 12.7 8-5.4"/></svg></span><span class="mk-chip-tx"><b>Telegram</b><small>Mensajería</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 3 6.8 3 11.3c0 2.5 1.2 4.7 3 6.2V21l2.9-1.6c1 .3 2 .4 3.1.4 5.1 0 9-3.8 9-8.5S17.1 3 12 3Z"/><path d="m7.5 13 2.9-3.1 2.2 1.7 2.4-2.5"/></svg></span><span class="mk-chip-tx"><b>Facebook Messenger</b><small>Mensajes directos</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14a2 2 0 0 1-2 2H9l-4 3V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg></span><span class="mk-chip-tx"><b>Chat web</b><small>En tu propio sitio</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><span class="mk-chip-tx"><b>Formulario web</b><small>En tu propio sitio</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capacidades disponibles hoy -->
+    <section class="prd-capabilities" id="capacidades" aria-labelledby="prd-cap-title">
+      <div class="prd-content-width">
+        <div class="prd-section-heading">
+          <span class="prd-eyebrow">DISPONIBLE HOY</span>
+          <h2 id="prd-cap-title">Todo lo que ya puedes recorrer en la demostración.</h2>
+          <p>Estas herramientas funcionan hoy con datos de ejemplo. Cada una muestra, con claridad, su estado en esta etapa.</p>
+        </div>
+        <div class="prd-detail-grid">
+          <article class="prd-detail-card"><span class="prd-detail-number">01</span><h3>Una agenda semanal que reúne la operación</h3><p>Consulta las horas reservadas y la disponibilidad del equipo en una vista común, organizada por día y profesional.</p><span class="prd-detail-status">Disponible en la demostración</span></article>
+          <article class="prd-detail-card"><span class="prd-detail-number">02</span><h3>Una página pública para solicitar una hora</h3><p>Tus clientes recorren la reserva desde el teléfono: eligen un servicio, revisan horarios y dejan sus datos. El flujo es demostrativo.</p><span class="prd-detail-status">Flujo navegable de demostración</span></article>
+          <article class="prd-detail-card"><span class="prd-detail-number">03</span><h3>Cada cliente, con su ficha e historial</h3><p>Ten a mano a cada cliente: historial de visitas, próxima reserva, contacto y notas — con el vocabulario de tu rubro.</p><span class="prd-detail-status">Disponible en la demostración</span></article>
+          <article class="prd-detail-card"><span class="prd-detail-number">04</span><h3>Servicios y equipo en un mismo espacio</h3><p>Consulta el catálogo de servicios y las personas que los atienden. La gestión multi-sucursal está en desarrollo.</p><span class="prd-detail-status">Disponible en la demostración</span></article>
+          <article class="prd-detail-card"><span class="prd-detail-number">05</span><h3>Indicadores para entender la actividad</h3><p>Reportes de reservas, ocupación e ingresos estimados, calculados a partir de los datos de ejemplo del período.</p><span class="prd-detail-status">Disponible en la demostración</span></article>
+          <article class="prd-detail-card"><span class="prd-detail-number">06</span><h3>Se adapta al vocabulario de tu rubro</h3><p>Orah ajusta los términos de la interfaz a tu negocio: pacientes, clientes o huéspedes, según el rubro que atiendas.</p><span class="prd-detail-status">Disponible en la demostración</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximamente / roadmap -->
+    <section class="prd-roadmap" id="roadmap" aria-labelledby="prd-rm-title">
+      <div class="prd-content-width prd-roadmap-inner">
+        <div>
+          <span class="prd-eyebrow">PRÓXIMAMENTE</span>
+          <h2 id="prd-rm-title">Nuevas capacidades, con su estado a la vista.</h2>
+          <p>Estas funciones están en camino. Las mostramos con su estado real para que sepas qué está disponible hoy y qué llega después.</p>
+        </div>
+        <div class="prd-roadmap-items">
+          <div><span>En desarrollo</span><strong>Gestión multi-sucursal</strong><p>Administrar varias sedes con sus servicios, equipo y horarios.</p></div>
+          <div><span>En desarrollo</span><strong>Recordatorios por WhatsApp</strong><p>Avisos salientes de la cita, vinculados a cada reserva.</p></div>
+          <div><span>Alcance por definir</span><strong>Pagos y señas</strong><p>Cobro de señas y condiciones asociadas a la reserva.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="prd-bottom-cta" aria-labelledby="prd-cta-title">
+      <div class="prd-content-width">
+        <span class="prd-eyebrow">DESCUBRE ORAH</span>
+        <h2 id="prd-cta-title">Explora la experiencia de reserva y agenda.</h2>
+        <p>Recorre el panel y la página de reservas de ejemplo para conocer la experiencia actual.</p>
+        <a class="prd-primary-link" href="/#producto">Abrir demostración <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="prd-page-footer">
+    <div>
+      <a href="/">Orah</a>
+      <span>© 2026 Orah · <a class="prd-footer-dynx" href="https://dynxlabs.com" target="_blank" rel="noopener noreferrer"><strong>DYNX Labs</strong></a></span>
+      <a href="https://app.useorah.com" rel="noopener">Ingresar al panel ↗</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+
+  /* Tema (claro/oscuro) — misma clave que la landing */
+  var btn=document.getElementById('theme-toggle');
+  if(btn)btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var dark=cur==='dark'||(!cur&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('orah-theme',next);}catch(e){}
+  });
+
+  /* Showcase · pestañas (idéntico a la home) */
+  var VIEWS={
+    agenda:{title:"Agenda",copy:"Tu semana, de un vistazo",detail:"Reservas organizadas por día y profesional.",
+      body:'<div class="prd-ag" aria-hidden="true"><aside class="prd-ag-side"><div class="prd-ag-month">Noviembre<small>2026</small></div><div class="prd-ag-grp"><h5>Servicios<span>Esta semana</span></h5><div class="prd-ag-row"><i class="sq c-con"></i>Consulta general<b>6</b></div><div class="prd-ag-row"><i class="sq c-lim"></i>Limpieza dental<b>5</b></div><div class="prd-ag-row"><i class="sq c-bla"></i>Blanqueamiento<b>4</b></div></div><div class="prd-ag-grp"><h5>Profesionales</h5><div class="prd-ag-row"><i class="av">AR</i>Dra. Ana Rivas<b>10</b></div><div class="prd-ag-row"><i class="av alt">LF</i>Dr. Luis Fuentes<b>5</b></div></div></aside><div class="prd-ag-cal"><div class="prd-ag-wkh"><span></span><span>Lun 23</span><span>Mar 24</span><span>Mié 25</span><span class="on">Jue 26</span><span>Vie 27</span></div><div class="prd-ag-grid"><span class="todaycol" style="grid-column:5;grid-row:1/4"></span><span class="hr" style="grid-row:1">09</span><span class="hr" style="grid-row:2">11</span><span class="hr" style="grid-row:3">13</span><span class="ev c-lim" style="grid-column:2;grid-row:1">09:00</span><span class="ev c-con" style="grid-column:2;grid-row:2">11:00</span><span class="ev c-con" style="grid-column:3;grid-row:1">08:30</span><span class="ev c-lim" style="grid-column:3;grid-row:2">10:00</span><span class="ev c-bla" style="grid-column:4;grid-row:2">09:30</span><span class="ev c-bla" style="grid-column:5;grid-row:1">08:00</span><span class="ev c-con" style="grid-column:5;grid-row:3">12:00</span><span class="ev c-lim" style="grid-column:6;grid-row:1">10:00</span><span class="ev c-bla" style="grid-column:6;grid-row:2">11:00</span></div></div></div>'},
+    reservas:{title:"Reservas online",copy:"Una página para reservar",detail:"Tus clientes eligen un servicio y un horario disponible.",
+      body:'<div class="prd-bk" aria-hidden="true"><div class="prd-bk-head"><span class="prd-bk-logo">CS</span><span class="prd-bk-biz"><b>Clínica Dental Sonrisa</b><small>Abierto hoy · cierra a las 17:00</small></span></div><div class="prd-bk-prog"><i class="on"></i><i></i><i></i></div><div class="prd-bk-step">Paso 1 de 3</div><strong class="prd-bk-q">¿Qué necesitas?</strong><div class="prd-bk-chips"><span class="on">Todos</span><span>Consultas</span><span>Limpieza</span><span>Estética</span></div><div class="prd-bk-svc"><span class="prd-bk-dur">30<small>min</small></span><span class="prd-bk-nm"><b>Consulta general</b><small>Evaluación y diagnóstico</small></span><span class="prd-bk-pr">$25.000</span></div><div class="prd-bk-svc sel"><span class="prd-bk-dur">45<small>min</small></span><span class="prd-bk-nm"><b>Limpieza dental</b><small>Profilaxis y destartraje</small></span><span class="prd-bk-pr">$35.000</span><em class="prd-bk-ck">✓</em></div><div class="prd-bk-svc"><span class="prd-bk-dur">60<small>min</small></span><span class="prd-bk-nm"><b>Blanqueamiento</b><small>Sesión en clínica</small></span><span class="prd-bk-pr">$120.000</span></div><div class="prd-bk-bar"><span class="prd-bk-sel"><b>Limpieza dental</b><small>45 min · $35.000</small></span><button type="button" tabindex="-1">Continuar</button></div></div>'},
+    gestion:{title:"Gestión",copy:"Servicios y equipo conectados",detail:"Consulta quién atiende y qué ofrece tu negocio.",
+      body:'<div class="prd-tm" aria-hidden="true"><div class="prd-tm-head"><b>Equipo</b><small>3 profesionales · 3 boxes</small></div><div class="prd-tm-card"><span class="prd-avatar">AR</span><span class="prd-tm-info"><b>Dra. Ana Rivas</b><small>Odontología general · Box 1</small><span class="prd-tm-chips"><i class="c-con">Consulta</i><i class="c-lim">Limpieza</i><i class="c-bla">Blanqueamiento</i></span></span><span class="prd-tm-n"><b>9</b><small>esta semana</small></span></div><div class="prd-tm-card"><span class="prd-avatar alt">LF</span><span class="prd-tm-info"><b>Dr. Luis Fuentes</b><small>Endodoncista · Box 2</small><span class="prd-tm-chips"><i class="c-con">Consulta</i><i class="c-lim">Limpieza</i><i class="c-endo">Endodoncia</i></span></span><span class="prd-tm-n"><b>5</b><small>esta semana</small></span></div><div class="prd-tm-card"><span class="prd-avatar alt2">PS</span><span class="prd-tm-info"><b>Dra. Paula Soto</b><small>Ortodoncista · Box 3</small><span class="prd-tm-chips"><i class="c-orto">Ortodoncia</i><i class="c-orto">Control de ortodoncia</i></span></span><span class="prd-tm-n"><b>3</b><small>esta semana</small></span></div></div>'},
+    reportes:{title:"Reportes",copy:"Una lectura clara de la actividad",detail:"Explora indicadores de la agenda de demostración.",
+      body:'<div class="prd-rp" aria-hidden="true"><div class="prd-rp-kpis"><div><small>Reservas semana</small><b>15</b></div><div><small>Ingresos est.</small><b>$805.000</b></div><div><small>Nuevos · nov</small><b>2</b></div><div><small>Ocupación</small><b>59%</b></div></div><div class="prd-rp-box"><h6>Reservas por día<span>15 esta semana</span></h6><div class="prd-rp-days"><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>L</em></span><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>M</em></span><span class="prd-rp-day"><b>2</b><s class="tr"><s class="fl" style="height:67%"></s></s><em>M</em></span><span class="prd-rp-day on"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>J</em></span><span class="prd-rp-day"><b>3</b><s class="tr"><s class="fl" style="height:100%"></s></s><em>V</em></span><span class="prd-rp-day"><b>1</b><s class="tr"><s class="fl" style="height:33%"></s></s><em>S</em></span><span class="prd-rp-day"><b>0</b><s class="tr"><s class="fl" style="height:5%"></s></s><em>D</em></span></div></div><div class="prd-rp-box"><h6>Reservas por servicio<span>3 servicios</span></h6><div class="prd-rp-row c-con"><span class="rl"><i></i>Consulta general</span><span class="rt"><s style="width:100%"></s></span><b>6</b></div><div class="prd-rp-row c-lim"><span class="rl"><i></i>Limpieza dental</span><span class="rt"><s style="width:83%"></s></span><b>5</b></div><div class="prd-rp-row c-bla"><span class="rl"><i></i>Blanqueamiento</span><span class="rt"><s style="width:67%"></s></span><b>4</b></div></div></div>'},
+  };
+  var tabs=Array.prototype.slice.call(document.querySelectorAll('#prd-tabs button')),
+      screen=document.getElementById('prd-screen'),
+      title=document.getElementById('prd-screen-title'),
+      body=document.getElementById('prd-screen-body'),
+      ctitle=document.getElementById('prd-copy-title'),
+      cdetail=document.getElementById('prd-copy-detail');
+  tabs.forEach(function(b){b.addEventListener('click',function(){
+    var id=b.dataset.view,v=VIEWS[id];if(!v)return;
+    tabs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    screen.className='prd-screen prd-screen-'+id;
+    title.textContent=v.title;body.innerHTML=v.body;
+    ctitle.textContent=v.copy;cdetail.textContent=v.detail;
+  });});
+})();
+</script>
+</body>
+</html>

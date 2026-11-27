@@ -18,3 +18,16 @@
   - **B — Reducir densidad y limitar fps:** bajar el tope de puntos (~1.800 → ~1.000) y cap a ~40 fps. La esfera se ve prácticamente igual y cuesta casi la mitad. **Cambio visual mínimo → requiere OK de Arois.**
 - **Recomendación:** aplicar A + B.
 - Estado: **pendiente** · Prioridad: normal.
+
+---
+
+## Hecho
+
+### WEB-02 · Página pública `/producto/` con Aria multicanal
+**Aprobado e implementado (2026-11-27).**
+
+- Mockup `docs/mockup-producto.html` aprobado por Arois → implementado en `producto/index.html` (se sirve en `useorah.com/producto/`).
+- Posicionamiento multicanal: hero "**Tu cliente escribe; Orah agenda.**", sección **Aria** (en desarrollo) con 6 canales activables, **Disponible hoy** (6 capacidades con estado real), **Próximamente** (multi-sucursal, recordatorios WhatsApp, pagos y señas), CTA y footer.
+- Reutiliza `site.css` (`prd-*`) y Figtree; tema claro/oscuro con la clave `orah-theme` (igual que la landing); showcase interactivo de 4 vistas; **DYNX Labs** enlazado. Mantiene `noindex` temporal (quitar al publicar).
+- Revisado a ojo en local (claro/oscuro/móvil), sin errores de consola ni recortes. **Pendiente: commit + push.**
+- Detalle en `BITACORA.md` (entrada 2026-11-27).
