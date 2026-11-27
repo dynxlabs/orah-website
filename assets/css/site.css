@@ -433,3 +433,77 @@ svg {
 @media (max-width: 900px) { .prd-showcase { grid-template-columns: 1fr; }.prd-preview { max-width: 640px; }.prd-feature-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }.prd-page-hero-inner { grid-template-columns: 1fr; }.prd-page-hero-inner > .prd-preview { width: 100%; max-width: 680px; }.prd-roadmap-inner { grid-template-columns: 1fr; }.prd-roadmap-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .prd-section { padding-inline: 22px; }.prd-intro { margin-bottom: 30px; }.prd-feature-list { grid-template-columns: 1fr; }.prd-tabs { gap: 6px; }.prd-tabs button { padding: 7px 10px; font-size: 10px; }.prd-screen { min-height: 250px; }.prd-site-header-inner { width: calc(100% - 36px); gap: 8px; }.prd-site-header nav { display: none; }.prd-site-actions { gap: 8px; }.prd-header-cta { padding: 8px 11px; font-size: 10px; }.prd-page-hero, .prd-capabilities, .prd-roadmap, .prd-bottom-cta { padding-inline: 22px; }.prd-page-hero-inner { grid-template-columns: minmax(0, 1fr); }.prd-detail-grid { grid-template-columns: 1fr; }.prd-detail-card { min-height: 210px; }.prd-roadmap-items { grid-template-columns: 1fr; }.prd-page-footer > div { flex-wrap: wrap; }.prd-page-footer span { order: 3; width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .prd-tabs button, .prd-primary-link { transition: none; } }
+
+/* ===== Previews en desarrollo: Recordatorios por WhatsApp (iPhone Glaciar, WhatsApp iOS 2026) y Pagos y señas — aprobados 2026-11-27 ===== */
+/* ===== iPhone realista, marco Glaciar; corte inferior tipo "peek" (sin deformar la pantalla) ===== */
+.ip{position:relative;width:292px;max-width:100%;margin:8px auto 0;padding:9px 9px 0;border-radius:52px 52px 0 0;
+  background:linear-gradient(115deg,#e3ecf3 0%,#b9cbda 16%,#9fb5c7 38%,#c4d4e1 55%,#a3b9ca 78%,#dbe6ef 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),inset 0 0 0 1px rgba(120,145,165,.45),0 26px 64px -30px rgba(8,27,35,.5);}
+.ip-b{position:absolute;width:3px;border-radius:2px 0 0 2px;background:linear-gradient(90deg,#8ea5b8,#b3c6d5);}
+.ip-b.r{border-radius:0 2px 2px 0;background:linear-gradient(90deg,#b3c6d5,#8ea5b8);}
+.ip-b.l{left:-3px;} .ip-b.r{right:-3px;}
+.ip-b.b1{top:104px;height:26px;}   /* botón de acción */
+.ip-b.b2{top:150px;height:44px;}   /* volumen + */
+.ip-b.b3{top:204px;height:44px;}   /* volumen − */
+.ip-b.b4{top:168px;height:70px;}   /* encendido */
+.ip-screen{position:relative;border-radius:44px 44px 0 0;overflow:hidden;background:#000;box-shadow:0 0 0 2.5px #05080a;}
+.ip-di{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:80px;height:24px;border-radius:13px;background:#000;z-index:6;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;}
+.ip-cam{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#2a4a5a,#0b1418 60%);box-shadow:0 0 0 1.5px #0d0d0d;}
+/* ===== WhatsApp iOS 2026 (Liquid Glass): barra superior transparente, controles de vidrio flotantes ===== */
+.ip-screen{background:#efeae2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23e0d7ca' stroke-width='1.1' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M40 8l6 6M46 8l-6 6'/%3E%3Cpath d='M8 44q6-6 12 0'/%3E%3Crect x='38' y='38' width='10' height='8' rx='2'/%3E%3Cpath d='M28 26h6M31 23v6'/%3E%3C/g%3E%3C/svg%3E");}
+.ip-fade{position:absolute;inset:0 0 auto 0;height:118px;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(239,234,226,.97) 0%,rgba(239,234,226,.82) 55%,rgba(239,234,226,0) 100%);}
+.ip-status{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;height:46px;padding:4px 17px 0 27px;color:#000;font-size:14px;font-weight:600;letter-spacing:-.01em;}
+.ip-sys{display:flex;align-items:center;gap:4px;}
+.ip-sys svg{height:10.5px;width:auto;display:block;}
+.wa-lg{background:rgba(255,255,255,.58);-webkit-backdrop-filter:blur(14px) saturate(1.7);backdrop-filter:blur(14px) saturate(1.7);border:1px solid rgba(255,255,255,.75);box-shadow:0 4px 14px -4px rgba(11,20,26,.18),inset 0 1px 0 rgba(255,255,255,.95);}
+.wa-nav{position:relative;z-index:4;display:flex;align-items:center;gap:6px;padding:2px 10px 8px;color:#111b21;}
+.wa-btn{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;}
+.wa-btn svg{width:17px;height:17px;}
+.wa-who{min-width:0;flex:1;display:flex;align-items:center;gap:7px;height:34px;padding:0 10px 0 3px;border-radius:999px;}
+.wa-ava{width:28px;height:28px;flex:none;display:grid;place-items:center;border-radius:50%;background:#0e5e68;color:#fff;font-size:10px;font-weight:800;}
+.wa-who span{min-width:0;display:grid;line-height:1.15;}
+.wa-who b{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wa-who small{font-size:8.5px;color:#667781;}
+.wa-calls{flex:none;display:flex;align-items:center;gap:14px;height:34px;padding:0 12px;border-radius:999px;}
+.wa-calls svg{width:17px;height:17px;}
+.wa-body{position:relative;z-index:2;padding:6px 10px 10px;display:grid;gap:6px;align-content:start;}
+.wa-date{justify-self:center;padding:3px 11px;border-radius:999px;color:#3b4a54;font-size:8.5px;font-weight:600;margin-bottom:2px;}
+.wa-bub{max-width:84%;padding:7px 10px 5px;font-size:11px;line-height:1.42;color:#111b21;box-shadow:0 1px .5px rgba(11,20,26,.12);}
+.wa-bub b{font-weight:700;}
+.wa-bub.in{justify-self:start;background:#fff;border-radius:17px 17px 17px 5px;}
+.wa-bub.out{justify-self:end;background:#d9fdd3;border-radius:17px 17px 5px 17px;}
+.wa-meta{display:block;margin-top:2px;text-align:right;font-size:7.5px;color:#667781;}
+.wa-tick{color:#53bdeb;font-style:normal;}
+.wa-card{justify-self:start;width:84%;background:#fff;border-radius:17px 17px 17px 5px;overflow:hidden;box-shadow:0 1px .5px rgba(11,20,26,.12);}
+.wa-card .wa-bub{max-width:none;box-shadow:none;border-radius:0;}
+.wa-card button{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px;border:0;border-top:1px solid #e9edef;background:#fff;color:#1daa61;font:inherit;font-size:11px;font-weight:600;cursor:default;}
+.wa-card button svg{width:13px;height:13px;}
+.wa-compose{position:relative;z-index:4;display:flex;align-items:center;gap:6px;padding:4px 10px 16px;color:#111b21;}
+.wa-field{min-width:0;flex:1;display:flex;align-items:center;justify-content:space-between;height:34px;padding:0 10px 0 13px;border-radius:999px;color:#8696a0;font-size:10.5px;}
+.wa-field svg{width:16px;height:16px;color:#54656f;}
+.wa-mic{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;background:#1daa61;color:#fff;box-shadow:0 4px 12px -4px rgba(29,170,97,.6);}
+.wa-mic svg,.wa-cam svg{width:16px;height:16px;}
+.wa-cam{color:#111b21;}
+
+/* ===== Pagos y señas — al nivel de prd-bk (checkout del flujo de reserva) ===== */
+.pay-ticket{display:grid;gap:6px;margin-top:2px;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:var(--soft);}
+.pay-trow{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:9.5px;color:var(--muted);}
+.pay-trow b{font-size:10px;font-weight:700;color:var(--ink);}
+.pay-amt{display:grid;gap:5px;}
+.pay-amt > div{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--ink2);}
+.pay-amt > div b{font-size:10.5px;font-weight:700;color:var(--ink);}
+.pay-amt .main{padding:9px 11px;border-radius:9px;background:color-mix(in srgb,var(--acc) 9%,var(--surface));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--acc) 35%,transparent);}
+.pay-amt .main span{color:var(--ink);font-weight:600;}
+.pay-amt .main b{color:var(--acc-text);font-size:13px;}
+.pay-amt .sub span,.pay-amt .sub b{color:var(--muted);font-weight:600;}
+.pay-lbl{font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.pay-methods{display:flex;gap:7px;}
+.pay-m{flex:1;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:var(--surface);}
+.pay-m.on{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc);}
+.pay-m img{height:17px;width:auto;display:block;}
+
+/* ===== Showcase: vista "dispositivo" (Recordatorios muestra el teléfono, no la ventana orah.app) ===== */
+.prd-window.is-device{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;}
+.prd-window.is-device .prd-windowbar,.prd-window.is-device .prd-screen-head{display:none;}
+.prd-window.is-device .prd-screen{min-height:0;padding:0;background:none;}
+.prd-pay-wrap{gap:11px;}

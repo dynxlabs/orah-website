@@ -40,3 +40,11 @@
 - Enlaces del menú actualizados en todo el sitio (`site.js`): a raíz (`/#sección`) para que naveguen desde cualquier página; las entradas de "Producto" llevan a `/producto/`.
 - **Regla para páginas nuevas:** usar este mismo header (mega-menú + `site.js`), no un header propio.
 - Detalle en `BITACORA.md` (entrada 2026-11-27).
+
+### WEB-04 · Previews de Recordatorios por WhatsApp y Pagos y señas en el showcase de la landing
+**Aprobado e implementado (2026-11-27).** Mockup: `docs/mockup-previews-landing.html`.
+
+- El showcase de la landing pasa de 4 a **6 pestañas** (+ Recordatorios, + Pagos); ambas marcadas "función en desarrollo".
+- **Recordatorios:** iPhone con marco Glaciar y Dynamic Island, interfaz **WhatsApp iOS 2026 (Liquid Glass)**, batería 79% y **hora real del visitante** (los mensajes, 8 y 7 min antes).
+- **Pagos y señas:** checkout al nivel de la reserva (`prd-bk`) con SVG oficiales de Visa, Mastercard y American Express (`assets/brands/`, revisados sin scripts).
+- Referencias a `site.css`/`site.js` versionadas (`?v=20261127b`) para que HTML, CSS y JS nuevos lleguen juntos.
