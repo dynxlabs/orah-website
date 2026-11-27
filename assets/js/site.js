@@ -71,12 +71,12 @@
 
   /* ───────── Mega-menú / buscador / drawer ───────── */
   const MENU = [
-    { id: "producto", label: "Producto", pk: "Qué incluye",
+    { id: "producto", label: "Producto", pk: "La plataforma",
       primary: [
-        { t: "Agenda", href: "/producto/" }, { t: "Página de reservas", href: "/producto/" },
-        { t: "Recordatorios por WhatsApp", href: "/producto/" }, { t: "Pagos y señas", href: "/producto/" },
-        { t: "Equipo y multi-sucursal", href: "/producto/" }, { t: "Reportes", href: "/producto/" }],
-      sk: "Empieza", secondary: [{ t: "Ver demo", href: "/#producto", arrow: true }, { t: "Reservar una hora", href: "/#producto", arrow: true }] },
+        { t: "Reserva multicanal con Aria", href: "/producto/#aria" },
+        { t: "Qué incluye hoy", href: "/producto/#capacidades" },
+        { t: "Próximamente", href: "/producto/#roadmap" }],
+      sk: "Empieza", secondary: [{ t: "Ver la demo", href: "/#producto", arrow: true }] },
     { id: "rubros", label: "Rubros", pk: "Para quién",
       primary: [{ t: "Clínicas y dental", href: "/#producto" }, { t: "Estética y spa", href: "/#producto" }, { t: "Hospedaje", href: "/#producto" }, { t: "Barbería y peluquería", href: "/#producto" }, { t: "Servicios profesionales", href: "/#producto" }],
       sk: "¿No está tu rubro?", secondary: [{ t: "Hablemos", href: "/#contacto", arrow: true }] },
