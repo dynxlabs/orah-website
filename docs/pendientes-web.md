@@ -55,4 +55,4 @@
 - **Orbe = copia exacta del de dynxlabs.com** (`hero-orb.js`): misma geometría, densidad, animación y forma de dibujar; solo cambia el color (paleta de Orah). Se ve la mitad, centrado en el borde derecho; hero de 760 px como DYNX (mismo tamaño de orbe). Modo claro en petróleo más profundo; difuminado central y el de la izquierda del hero en `#4FB3BF` (color de "rah" del logo). Sin interacción con el cursor (como DYNX).
 - **Texto del hero** con los tamaños de DYNX (titular 44–100 px, bajada 17–21 px, botones 15 px) y titulares del carrusel en **3 líneas** (las dos negritas unidas).
 - **Cabecera (landing y /producto/):** idioma = toggle **ES · PT · EN** (estilo del interruptor; en oscuro, riel petróleo) y tema = **interruptor** (reutiliza el `.sw` de la reserva pública).
-- Pendiente de decisión: en móvil el texto del hero pasa sobre el orbe (se mantuvo como DYNX). `/en/` y `/pt-br/` aún no existen.
+- **Decidido (2026-11-28):** en móvil el orbe se mantiene como en DYNX (el texto pasa sobre él); Arois descartó atenuarlo o moverlo. Pendiente: `/en/` y `/pt-br/` aún no existen.
