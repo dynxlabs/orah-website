@@ -1,47 +1,51 @@
-/* Red neuronal 3D del hero (Petróleo). Portado 1:1 desde OrahLanding.tsx. */
+/* ============================================================
+   Orah — Orbe del hero (red neuronal 3D)
+   Copia EXACTA de dynxlabs.com/assets/js/hero-orb.js: misma geometría,
+   densidad, animación, aristas, señales, anillos y halo. Solo cambian
+   los colores: paleta de Orah (petróleo en claro, cian en oscuro).
+   Sin interacción con el cursor.
+   Alineado a la derecha: se ve la mitad. Tamaño proporcional al
+   lado menor del hero. Respeta prefers-reduced-motion.
+============================================================ */
 (function () {
-  const canvas = document.getElementById("orb-canvas");
-  const visual = document.getElementById("lp-visual");
-  if (!canvas || !visual) return;
-  const ctx = canvas.getContext("2d");
+  const canvas = document.getElementById('orb-canvas');
+  if (!canvas) return;
+  const section = canvas.parentElement;
+  const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Paleta de Orah. Mismas opacidades que DYNX; solo cambia el color.
+  function readPal() {
+    const el = document.documentElement;
+    const dark = el.getAttribute('data-theme') === 'dark' ||
+      (el.getAttribute('data-theme') !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return dark
+      ? { hue: 189, sat: 70, pLight: 60, halo: '79,179,191', haloA: .34, edge: '96,196,208', signal: '150,232,240',
+          orbit: ['rgba(96,196,208,.14)', 'rgba(96,196,208,.10)'] }
+      : { hue: 187, sat: 92, pLight: 17, halo: '79,179,191', haloA: .42, edge: '2,44,50', signal: '6,84,96',
+          orbit: ['rgba(2,44,50,.18)', 'rgba(2,44,50,.13)'] };   // modo claro: petróleo más profundo para que contraste
+  }
+  let PAL = readPal();
+  new MutationObserver(() => { PAL = readPal(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { PAL = readPal(); });
 
   let width = 0, height = 0, dpr = 1;
-  let particles = [];
-  let edges = [];
-  let signals = [];
-  let pulses = [];
-  let time = 0, lastFrame = 0, raf = 0, sigAcc = 0;
-
-  const pointer = { x: 0, y: 0, tnx: 0, tny: 0, nx: 0, ny: 0, active: false };
-
-  function readPalette() {
-    const el = document.documentElement;
-    const dark =
-      el.getAttribute("data-theme") === "dark" ||
-      (el.getAttribute("data-theme") !== "light" &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    return dark
-      ? { pSat: 70, pLight: 60, edge: "96,196,208",
-          halo: ["rgba(96,196,208,.20)", "rgba(96,196,208,.08)", "rgba(96,196,208,.02)", "rgba(96,196,208,0)"],
-          signal: "150,232,240", orbit: ["rgba(96,196,208,.14)", "rgba(130,210,220,.10)"] }
-      : { pSat: 56, pLight: 33, edge: "14,94,104",
-          halo: ["rgba(14,94,104,.15)", "rgba(14,94,104,.07)", "rgba(14,94,104,.02)", "rgba(14,94,104,0)"],
-          signal: "16,120,132", orbit: ["rgba(14,94,104,.12)", "rgba(20,110,120,.09)"] };
-  }
-  let pal = readPalette();
+  let particles = [], edges = [], signals = [], projBuf = [];
+  let time = 0, lastFrame = 0, sigAcc = 0, raf = 0;
 
   function resize() {
-    const rect = visual.getBoundingClientRect();
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = section.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     width = Math.max(1, rect.width);
     height = Math.max(1, rect.height);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    build();
+    // La red se genera una sola vez: regenerarla al cambiar el tamaño la re-aleatoriza y produce saltos
+    if (!particles.length) build();
   }
 
   function build() {
@@ -54,7 +58,7 @@
       const th = golden * i;
       particles.push({ x: Math.cos(th) * r, y, z: Math.sin(th) * r,
         seed: Math.random() * Math.PI * 2, phase: Math.random() * Math.PI * 2,
-        size: 0.48 + Math.random() * 1.05, hue: 182 + Math.random() * 14 });
+        size: 0.48 + Math.random() * 1.05 });
     }
     const linked = new Set();
     for (let i = 0; i < particles.length; i++) {
@@ -70,7 +74,7 @@
       near.sort((m, n) => m[0] - n[0]);
       for (const pair of near.slice(0, 3)) {
         const j = pair[1];
-        const key = i < j ? i + ":" + j : j + ":" + i;
+        const key = i < j ? i + ':' + j : j + ':' + i;
         if (!linked.has(key)) { linked.add(key); edges.push([i, j]); }
       }
     }
@@ -79,33 +83,36 @@
   const maxSig = () => Math.min(26, Math.max(6, Math.floor(edges.length / 55)));
   const smooth = (t) => t * t * (3 - 2 * t);
 
-  function draw(ts = 0) {
+  function draw(ts) {
     const dt = Math.min(32, ts - (lastFrame || ts));
     lastFrame = ts;
+    if (!reduce) time += dt * 0.00042;
     ctx.clearRect(0, 0, width, height);
-    time += reduce ? 0 : dt * 0.00042;
-
-    pointer.nx += (pointer.tnx - pointer.nx) * 0.07;
-    pointer.ny += (pointer.tny - pointer.ny) * 0.07;
 
     const mobile = width < 600;
     const breathe = 1 + (reduce ? 0 : Math.sin(time * 0.8) * 0.014);
     const scale = Math.min(width, height) * (mobile ? 0.405 : 0.425) * breathe;
-    const cx = width * (0.52 + pointer.nx * 0.02);
-    const cy = height * (0.49 + pointer.ny * 0.02);
+    const cx = width;                 // borde derecho: solo se ve la mitad
+    const cy = height * 0.49;
 
-    const rotY = time * 0.32 + pointer.nx * 0.22;
-    const rotX = -0.2 + Math.sin(time * 0.46) * 0.1 + pointer.ny * 0.16;
+    const rotY = time * 0.32;
+    const rotX = -0.2 + Math.sin(time * 0.46) * 0.1;
     const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
     const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
 
-    const proj = new Array(particles.length);
+    if (projBuf.length !== particles.length) projBuf = particles.map(() => ({ sx: 0, sy: 0, z: 0, size: 0 }));
+    const proj = projBuf;
 
-    const halo = ctx.createRadialGradient(cx, cy, scale * 0.04, cx, cy, scale * 1.48);
-    halo.addColorStop(0, pal.halo[0]); halo.addColorStop(0.42, pal.halo[1]);
-    halo.addColorStop(0.76, pal.halo[2]); halo.addColorStop(1, pal.halo[3]);
+    // El halo se funde a cero antes de llegar al borde del hero (sin corte visible arriba ni abajo)
+    // y con caída suave (cuadrática) para no dejar un anillo visible
+    const haloR = Math.min(scale * 1.48, Math.min(cy, height - cy) * 0.98);
+    const halo = ctx.createRadialGradient(cx, cy, scale * 0.04, cx, cy, haloR);
+    for (let i = 0; i <= 10; i++) {
+      const t = i / 10;
+      halo.addColorStop(t, 'rgba(' + PAL.halo + ',' + (PAL.haloA * Math.pow(1 - t, 2)).toFixed(4) + ')');
+    }
     ctx.fillStyle = halo;
-    ctx.beginPath(); ctx.arc(cx, cy, scale * 1.48, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, haloR, 0, Math.PI * 2); ctx.fill();
 
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
@@ -120,17 +127,13 @@
       const y1 = py * cosX - z1 * sinX;
       const z2 = py * sinX + z1 * cosX;
       const persp = 2.9 / (2.9 + z2 * 0.48);
-      let sx = cx + x1 * scale * persp;
-      let sy = cy + y1 * scale * persp;
-      if (pointer.active) {
-        const dx = sx - pointer.x, dy = sy - pointer.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120 && dist > 0) { const force = smooth(1 - dist / 120) * 15; sx += (dx / dist) * force; sy += (dy / dist) * force; }
-      }
-      proj[i] = { sx, sy, z: z2, size: p.size * persp, hue: p.hue };
+      const q = proj[i];
+      q.sx = cx + x1 * scale * persp; q.sy = cy + y1 * scale * persp; q.z = z2; q.size = p.size * persp;
     }
 
-    ctx.lineCap = "round";
+    // Aristas agrupadas por opacidad: un trazo por grupo
+    const NB = 6;
+    const eb = Array.from({ length: NB }, () => []);
     for (const e of edges) {
       const a = proj[e[0]], b = proj[e[1]];
       const dx = a.sx - b.sx, dy = a.sy - b.sy;
@@ -139,11 +142,21 @@
       const depth = (a.z + b.z + 2) / 4;
       const alpha = (0.035 + depth * 0.1) * (1 - distance / 58);
       if (alpha <= 0.012) continue;
-      ctx.strokeStyle = "rgba(" + pal.edge + "," + alpha + ")";
-      ctx.lineWidth = 0.45 + depth * 0.42;
-      ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
+      const bi = Math.min(NB - 1, Math.floor(alpha / 0.03));
+      eb[bi].push(a.sx, a.sy, b.sx, b.sy);
+    }
+    ctx.lineCap = 'round';
+    ctx.lineWidth = 0.7;
+    for (let bi = 0; bi < NB; bi++) {
+      const seg = eb[bi];
+      if (!seg.length) continue;
+      ctx.strokeStyle = 'rgba(' + PAL.edge + ',' + ((bi + 0.5) * 0.03) + ')';
+      ctx.beginPath();
+      for (let k = 0; k < seg.length; k += 4) { ctx.moveTo(seg[k], seg[k + 1]); ctx.lineTo(seg[k + 2], seg[k + 3]); }
+      ctx.stroke();
     }
 
+    // Señales que viajan por las aristas
     if (!reduce) {
       sigAcc += dt;
       while (sigAcc > 60 && signals.length < maxSig() && edges.length) {
@@ -162,74 +175,63 @@
       const sx = a.sx + (b.sx - a.sx) * t;
       const sy = a.sy + (b.sy - a.sy) * t;
       const fade = Math.sin(Math.PI * t);
-      ctx.strokeStyle = "rgba(" + pal.signal + "," + (0.5 * fade) + ")";
+      ctx.strokeStyle = 'rgba(' + PAL.signal + ',' + (0.5 * fade) + ')';
       ctx.lineWidth = 1.1;
       ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(sx, sy); ctx.stroke();
-      ctx.beginPath(); ctx.fillStyle = "rgba(" + pal.signal + "," + (0.9 * fade) + ")";
+      ctx.beginPath(); ctx.fillStyle = 'rgba(' + PAL.signal + ',' + (0.9 * fade) + ')';
       ctx.arc(sx, sy, 1.9 + fade * 1.1, 0, Math.PI * 2); ctx.fill();
     }
 
+    // Anillos orbitales
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(-0.34 + Math.sin(time * 0.3) * 0.045);
-    ctx.strokeStyle = pal.orbit[0]; ctx.lineWidth = 0.7;
+    ctx.strokeStyle = PAL.orbit[0]; ctx.lineWidth = 0.7;
     ctx.beginPath(); ctx.ellipse(0, 0, scale * 1.06, scale * 0.36, 0, 0.1, Math.PI * 1.88); ctx.stroke();
     ctx.rotate(1.02);
-    ctx.strokeStyle = pal.orbit[1];
+    ctx.strokeStyle = PAL.orbit[1];
     ctx.beginPath(); ctx.ellipse(0, 0, scale * 0.98, scale * 0.31, 0, 0.12, Math.PI * 1.84); ctx.stroke();
     ctx.restore();
 
-    pulses = pulses.filter((p) => p.life < 1);
-    for (const pulse of pulses) {
-      pulse.life += reduce ? 1 : dt / 1050;
-      const r = pulse.life * scale * 1.28;
-      ctx.beginPath(); ctx.arc(pulse.x, pulse.y, r, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(" + pal.signal + "," + ((1 - pulse.life) * 0.38) + ")";
-      ctx.lineWidth = 1.1; ctx.stroke();
-    }
-
-    proj.sort((a, b) => a.z - b.z);
-    for (const p of proj) {
-      const depth = (p.z + 1) / 2;
-      const alpha = 0.34 + depth * 0.58;
-      const radius = p.size * (0.76 + depth * 0.5);
-      if (depth > 0.56) {
+    // Partículas agrupadas por profundidad, de atrás hacia delante
+    const PB = 8;
+    const pb = Array.from({ length: PB }, () => []);
+    for (const p of proj) pb[Math.max(0, Math.min(PB - 1, Math.floor(((p.z + 1) / 2) * PB)))].push(p);
+    for (let bi = 0; bi < PB; bi++) {
+      const list = pb[bi];
+      if (!list.length) continue;
+      const gd = (bi + 0.5) / PB;
+      const L = (PAL.pLight + gd * 18).toFixed(1);   // misma luminosidad por profundidad que DYNX
+      const G = PAL.pLight + 8;
+      const glowList = list.filter((p) => (p.z + 1) / 2 > 0.56);
+      if (glowList.length) {
+        ctx.fillStyle = 'hsla(' + PAL.hue + ',' + PAL.sat + '%,' + G + '%,' + (0.05 + gd * 0.07) + ')';
         ctx.beginPath();
-        ctx.fillStyle = "hsla(" + p.hue + "," + pal.pSat + "%," + (pal.pLight + 8) + "%," + (0.05 + depth * 0.07) + ")";
-        ctx.arc(p.sx, p.sy, radius * 3.3, 0, Math.PI * 2); ctx.fill();
+        for (const p of glowList) {
+          const r = p.size * (0.76 + ((p.z + 1) / 2) * 0.5) * 3.3;
+          ctx.moveTo(p.sx + r, p.sy); ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+        }
+        ctx.fill();
       }
+      ctx.fillStyle = 'hsla(' + PAL.hue + ',' + PAL.sat + '%,' + L + '%,' + (0.34 + gd * 0.58) + ')';
       ctx.beginPath();
-      ctx.fillStyle = "hsla(" + p.hue + "," + (pal.pSat + depth * 10) + "%," + (pal.pLight + depth * 18) + "%," + alpha + ")";
-      ctx.arc(p.sx, p.sy, radius, 0, Math.PI * 2); ctx.fill();
+      for (const p of list) {
+        const r = p.size * (0.76 + ((p.z + 1) / 2) * 0.5);
+        ctx.moveTo(p.sx + r, p.sy); ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+      }
+      ctx.fill();
     }
 
     if (!reduce) raf = requestAnimationFrame(draw);
   }
 
-  const onMove = (e) => {
-    const rect = canvas.getBoundingClientRect();
-    pointer.x = e.clientX - rect.left; pointer.y = e.clientY - rect.top;
-    pointer.tnx = (pointer.x / Math.max(1, rect.width) - 0.5) * 2;
-    pointer.tny = (pointer.y / Math.max(1, rect.height) - 0.5) * 2;
-    pointer.active = true;
-  };
-  const onLeave = () => { pointer.active = false; pointer.tnx = 0; pointer.tny = 0; };
-  const onClick = (e) => {
-    const rect = canvas.getBoundingClientRect();
-    pulses.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, life: 0 });
-  };
-  visual.addEventListener("pointermove", onMove);
-  visual.addEventListener("pointerleave", onLeave);
-  visual.addEventListener("click", onClick);
-
-  const mq = window.matchMedia("(prefers-color-scheme: dark)");
-  const onTheme = () => { pal = readPalette(); };
-  mq.addEventListener("change", onTheme);
-  const mo = new MutationObserver(onTheme);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-
-  const ro = new ResizeObserver(resize);
-  ro.observe(visual);
+  // El bucle corre sin interrupciones; el cambio de tamaño solo ajusta el lienzo
+  const onResize = () => { resize(); if (reduce) requestAnimationFrame(draw); };
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(onResize).observe(section);
+  } else {
+    window.addEventListener('resize', onResize);
+  }
   resize();
-  draw();
+  raf = requestAnimationFrame(draw);
 })();

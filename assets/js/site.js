@@ -19,6 +19,32 @@
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("orah-theme", next); } catch (e) {}
     });
+    // Interruptor: aria-checked = modo oscuro (sigue también los cambios del sistema)
+    const mq = matchMedia("(prefers-color-scheme: dark)");
+    const sync = () => {
+      if (!btn) return;
+      const t = root.getAttribute("data-theme");
+      btn.setAttribute("aria-checked", t === "dark" || (!t && mq.matches) ? "true" : "false");
+    };
+    new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    mq.addEventListener("change", sync);
+    sync();
+  })();
+
+  /* ───────── Idioma: toggle ES · PT · EN (la perilla se desliza y luego navega) ───────── */
+  (function langSwitch() {
+    const sw = $("#mm-langsw");
+    if (!sw) return;
+    const links = $$("a", sw);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    links.forEach((a, i) => a.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (a.getAttribute("aria-current") === "true") return;
+      links.forEach((x) => x.removeAttribute("aria-current"));
+      a.setAttribute("aria-current", "true");
+      sw.dataset.i = String(i);
+      setTimeout(() => { location.href = a.href; }, reduce ? 0 : 220);
+    }));
   })();
 
   /* ───────── Carrusel del hero ───────── */

@@ -109,9 +109,6 @@ svg {
 .mm-icon svg { width: 18px; height: 18px; stroke-width: 2; }
 .mm-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
-.mm-lang { display: flex; align-items: center; background: color-mix(in srgb, var(--ink) 8%, transparent); border-radius: 999px; padding: 3px; }
-.mm-lang button { padding: 4px 11px; border-radius: 999px; color: var(--muted); font-size: 12px; font-weight: 600; background: none; border: 0; cursor: pointer; transition: .15s; font-family: inherit; }
-.mm-lang button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.16); }
 
 /* Nota: la landing no incluye botón "Entrar"; los accesos viven en app.orah... y admin.orah... */
 
@@ -188,9 +185,6 @@ svg {
 .lp-dots button { width: 11px; height: 11px; border: 1px solid color-mix(in srgb, var(--muted) 65%, transparent); border-radius: 50%; background: transparent; cursor: pointer; padding: 0; transition: transform .18s var(--ease-out), background .2s ease, border-color .2s ease; }
 .lp-dots button[aria-current="true"] { background: var(--acc-text); border-color: var(--acc-text); }
 
-.lp-visual { height: min(460px, 56vh); width: 100%; position: relative; display: grid; place-items: center; cursor: crosshair; }
-.lp-visual::before { content: ""; position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--acc) 14%, transparent), transparent 68%); filter: blur(14px); }
-.lp-visual canvas { width: 100%; height: 100%; display: block; position: relative; z-index: 1; }
 
 /* Footer (4 columnas, estilo web DYNX Labs) */
 .ftr { background: var(--surface); border-top: 1px solid var(--line); padding: 64px clamp(24px, 5vw, 72px) 40px; }
@@ -240,7 +234,6 @@ svg {
   .mm-nav { display: none; }
   .mm-mega { display: none; }
   .mm-left .mm-icon { display: none; }
-  .mm-actions > .mm-lang { display: none; }
   .mm-burger { display: flex; }
   .mm-drawer.open {
     display: flex; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
@@ -257,7 +250,6 @@ svg {
   .mm-dlinks a:hover { background: var(--soft); }
   .mm-drawer-ft { display: flex; flex-direction: column; gap: 14px; padding: 18px 2px 4px; }
   .lp-hero { grid-template-columns: 1fr; gap: 6px; }
-  .lp-visual { order: -1; height: min(46vh, 320px); }
   .lp-copy { max-width: 100%; }
 }
 @media (max-width: 600px) {
@@ -512,3 +504,59 @@ svg {
 .prd-window.is-device .prd-windowbar,.prd-window.is-device .prd-screen-head{display:none;}
 .prd-window.is-device .prd-screen{min-height:0;padding:0;background:none;}
 .prd-pay-wrap{gap:11px;}
+
+/* ===== Hero: orbe a la mitad (copia del orbe de dynxlabs.com con colores de Orah) — aprobado 2026-11-28 ===== */
+/* Igual que dynxlabs.com: el hero mide ~760 px aunque la pantalla sea más baja, así el orbe
+   tiene el mismo tamaño (radio 323 px) y su parte baja sigue por debajo del borde de la pantalla. */
+.lp{isolation:isolate;min-height:760px;}
+/* Difuminado de la izquierda (arriba) del hero con el color de "rah" del logo; el de abajo a la derecha no cambia */
+.lp{background:
+  radial-gradient(ellipse at 12% 8%, color-mix(in srgb, #4FB3BF 24%, transparent), transparent 42%),
+  radial-gradient(ellipse at 88% 86%, color-mix(in srgb, var(--acc) 8%, transparent), transparent 44%),
+  var(--page);}
+#orb-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;}
+.lp-hero{position:relative;z-index:1;grid-template-columns:1fr;}
+/* Tamaños del texto = hero de dynxlabs.com (pesos de letra y colores de Orah) */
+.lp-copy{max-width:none;}
+.lp-h1{font-size:clamp(44px,7.2vw,100px);line-height:.98;letter-spacing:-.045em;}
+@media (min-width:700px){.lp-h1 .l{white-space:nowrap;}}
+/* Titular en 3 líneas: las dos líneas en negrita (.st) van juntas en una sola */
+.lp-h1 .l.st{display:inline;}
+.lp-h1 .l.st + .l.st::before{content:" ";}
+.lp-desc{font-size:clamp(17px,1.6vw,21px);line-height:1.5;max-width:44ch;margin-top:36px;}
+.lp-acts{gap:28px;margin-top:44px;}
+.lp-btn{font-size:15px;padding:13px 24px;}
+.lp-btn svg{width:15px;height:15px;}
+.lp-link{font-size:15px;}
+/* ===== Selector de idioma = toggle de 3 posiciones (mismo lenguaje que el interruptor de tema) =====
+   Riel --line de 24 px, perilla blanca de 18 px con la misma sombra que se desliza bajo el idioma activo. */
+.mm-langsw{position:relative;display:inline-grid;grid-auto-flow:column;grid-auto-columns:30px;height:24px;padding:3px;border-radius:999px;background:var(--line);}
+.mm-langsw-knob{position:absolute;top:3px;left:3px;width:30px;height:18px;border-radius:999px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .22s var(--ease-out);}
+.mm-langsw[data-i="1"] .mm-langsw-knob{transform:translateX(30px);}
+.mm-langsw[data-i="2"] .mm-langsw-knob{transform:translateX(60px);}
+.mm-langsw a{position:relative;z-index:1;display:grid;place-items:center;height:18px;border-radius:999px;color:var(--ink2);font-size:11px;font-weight:600;letter-spacing:.02em;text-decoration:none;transition:color .15s ease;}
+@media (hover:hover){.mm-langsw a:not([aria-current="true"]):hover{color:var(--ink);}}
+.mm-langsw a[aria-current="true"]{color:#16202a;}
+.mm-langsw a:focus-visible{outline:2px solid var(--acc-text);outline-offset:1px;}
+@media (prefers-reduced-motion:reduce){.mm-langsw-knob{transition:none;}}
+/* Modo oscuro: igual que el interruptor de tema activo (riel petróleo, perilla blanca, activo en petróleo) */
+:root[data-theme="dark"] .mm-langsw{background:var(--acc);}
+:root[data-theme="dark"] .mm-langsw a{color:rgba(255,255,255,.78);}
+:root[data-theme="dark"] .mm-langsw a[aria-current="true"]{color:var(--acc);}
+@media (hover:hover){:root[data-theme="dark"] .mm-langsw a:not([aria-current="true"]):hover{color:#fff;}}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .mm-langsw{background:var(--acc);}
+  :root:not([data-theme="light"]) .mm-langsw a{color:rgba(255,255,255,.78);}
+  :root:not([data-theme="light"]) .mm-langsw a[aria-current="true"]{color:var(--acc);}
+}
+/* Interruptor de tema = mismo .sw de la reserva pública (activado = modo oscuro) */
+.mm-themesw{position:relative;flex:none;width:40px;height:24px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:background .2s ease;}
+.mm-themesw[aria-checked="true"]{background:var(--acc);}
+.mm-themesw:focus-visible{outline:2px solid var(--acc-text);outline-offset:2px;}
+.mm-knob{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);display:grid;place-items:center;color:#7a8794;transition:transform .22s var(--ease-out);}
+.mm-themesw[aria-checked="true"] .mm-knob{transform:translateX(16px);color:var(--acc);}
+.mm-knob svg{grid-area:1/1;width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .15s ease;}
+.mm-moon{opacity:0;}
+.mm-themesw[aria-checked="true"] .mm-sun{opacity:0;}
+.mm-themesw[aria-checked="true"] .mm-moon{opacity:1;}
+@media (prefers-reduced-motion:reduce){.mm-knob,.mm-themesw{transition:none;}}

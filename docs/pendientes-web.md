@@ -48,3 +48,11 @@
 - **Recordatorios:** iPhone con marco Glaciar y Dynamic Island, interfaz **WhatsApp iOS 2026 (Liquid Glass)**, batería 79% y **hora real del visitante** (los mensajes, 8 y 7 min antes).
 - **Pagos y señas:** checkout al nivel de la reserva (`prd-bk`) con SVG oficiales de Visa, Mastercard y American Express (`assets/brands/`, revisados sin scripts).
 - Referencias a `site.css`/`site.js` versionadas (`?v=20261127b`) para que HTML, CSS y JS nuevos lleguen juntos.
+
+### WEB-05 · Hero con el orbe de DYNX Labs y cabecera con toggles
+**Aprobado e implementado (2026-11-28).** Mockup: `docs/mockup-hero-orbe.html`.
+
+- **Orbe = copia exacta del de dynxlabs.com** (`hero-orb.js`): misma geometría, densidad, animación y forma de dibujar; solo cambia el color (paleta de Orah). Se ve la mitad, centrado en el borde derecho; hero de 760 px como DYNX (mismo tamaño de orbe). Modo claro en petróleo más profundo; difuminado central y el de la izquierda del hero en `#4FB3BF` (color de "rah" del logo). Sin interacción con el cursor (como DYNX).
+- **Texto del hero** con los tamaños de DYNX (titular 44–100 px, bajada 17–21 px, botones 15 px) y titulares del carrusel en **3 líneas** (las dos negritas unidas).
+- **Cabecera (landing y /producto/):** idioma = toggle **ES · PT · EN** (estilo del interruptor; en oscuro, riel petróleo) y tema = **interruptor** (reutiliza el `.sw` de la reserva pública).
+- Pendiente de decisión: en móvil el texto del hero pasa sobre el orbe (se mantuvo como DYNX). `/en/` y `/pt-br/` aún no existen.
