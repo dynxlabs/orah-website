@@ -38,7 +38,7 @@
     .mk-chip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
     .mk-chip{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:var(--surface);}
     .mk-chip-ic{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:10px;background:color-mix(in srgb,var(--acc) 10%,var(--surface));color:var(--acc-text);}
-    .mk-chip-ic svg{width:19px;height:19px;}
+    .mk-chip-ic svg{width:19px;height:19px;}.mk-chip-ic img{width:19px;height:19px;display:block;}
     .mk-chip-tx{min-width:0;display:grid;gap:1px;}
     .mk-chip-tx b{color:var(--ink);font-size:13px;font-weight:700;}
     .mk-chip-tx small{color:var(--muted);font-size:10px;}
@@ -187,11 +187,11 @@
           </span>
         </div>
         <div class="mk-chip-grid">
-          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 0 1-12.4 7.5L3.5 21l1.5-4.3A8.5 8.5 0 1 1 20.5 12z"/></svg></span><span class="mk-chip-tx"><b>WhatsApp</b><small>Mensajería</small></span></div>
-          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span><span class="mk-chip-tx"><b>Instagram</b><small>Mensajes directos</small></span></div>
-          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 10.8l5.2 1.9L10.3 20l3-4.1L19 19z"/><path d="m8.2 12.7 8-5.4"/></svg></span><span class="mk-chip-tx"><b>Telegram</b><small>Mensajería</small></span></div>
-          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 3 6.8 3 11.3c0 2.5 1.2 4.7 3 6.2V21l2.9-1.6c1 .3 2 .4 3.1.4 5.1 0 9-3.8 9-8.5S17.1 3 12 3Z"/><path d="m7.5 13 2.9-3.1 2.2 1.7 2.4-2.5"/></svg></span><span class="mk-chip-tx"><b>Facebook Messenger</b><small>Mensajes directos</small></span></div>
-          <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14a2 2 0 0 1-2 2H9l-4 3V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg></span><span class="mk-chip-tx"><b>Chat web</b><small>En tu propio sitio</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><img src="/assets/brands/whatsapp.svg" alt="" width="19" height="19"/></span><span class="mk-chip-tx"><b>WhatsApp</b><small>Mensajería</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><img src="/assets/brands/instagram.svg" alt="" width="19" height="19"/></span><span class="mk-chip-tx"><b>Instagram</b><small>Mensajes directos</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><img src="/assets/brands/telegram.svg" alt="" width="19" height="19"/></span><span class="mk-chip-tx"><b>Telegram</b><small>Mensajería</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><img src="/assets/brands/messenger.svg" alt="" width="19" height="19"/></span><span class="mk-chip-tx"><b>Facebook Messenger</b><small>Mensajes directos</small></span></div>
+          <div class="mk-chip"><span class="mk-chip-ic"><img src="/assets/brands/chat-web.svg" alt="" width="19" height="19"/></span><span class="mk-chip-tx"><b>Chat web</b><small>En tu propio sitio</small></span></div>
           <div class="mk-chip"><span class="mk-chip-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><span class="mk-chip-tx"><b>Formulario web</b><small>En tu propio sitio</small></span></div>
         </div>
       </div>
