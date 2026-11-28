@@ -434,7 +434,7 @@ svg {
 @media (max-width: 600px) { .prd-section { padding-inline: 22px; }.prd-intro { margin-bottom: 30px; }.prd-feature-list { grid-template-columns: 1fr; }.prd-tabs { gap: 6px; }.prd-tabs button { padding: 7px 10px; font-size: 10px; }.prd-screen { min-height: 250px; }.prd-site-header-inner { width: calc(100% - 36px); gap: 8px; }.prd-site-header nav { display: none; }.prd-site-actions { gap: 8px; }.prd-header-cta { padding: 8px 11px; font-size: 10px; }.prd-page-hero, .prd-capabilities, .prd-roadmap, .prd-bottom-cta { padding-inline: 22px; }.prd-page-hero-inner { grid-template-columns: minmax(0, 1fr); }.prd-detail-grid { grid-template-columns: 1fr; }.prd-detail-card { min-height: 210px; }.prd-roadmap-items { grid-template-columns: 1fr; }.prd-page-footer > div { flex-wrap: wrap; }.prd-page-footer span { order: 3; width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .prd-tabs button, .prd-primary-link { transition: none; } }
 
-/* ===== Previews en desarrollo: Recordatorios por WhatsApp (iPhone Glaciar, WhatsApp iOS 2026) y Pagos y señas — aprobados 2026-11-27 ===== */
+/* ===== Previews en desarrollo: Recordatorios por WhatsApp (iPhone Glaciar, WhatsApp iOS 2026) y Pagos y anticipos — aprobados 2026-11-27 ===== */
 /* ===== iPhone realista, marco Glaciar; corte inferior tipo "peek" (sin deformar la pantalla) ===== */
 .ip{position:relative;width:292px;max-width:100%;margin:8px auto 0;padding:9px 9px 0;border-radius:52px 52px 0 0;
   background:linear-gradient(115deg,#e3ecf3 0%,#b9cbda 16%,#9fb5c7 38%,#c4d4e1 55%,#a3b9ca 78%,#dbe6ef 100%);
@@ -453,8 +453,13 @@ svg {
 .ip-screen{background:#efeae2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23e0d7ca' stroke-width='1.1' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M40 8l6 6M46 8l-6 6'/%3E%3Cpath d='M8 44q6-6 12 0'/%3E%3Crect x='38' y='38' width='10' height='8' rx='2'/%3E%3Cpath d='M28 26h6M31 23v6'/%3E%3C/g%3E%3C/svg%3E");}
 .ip-fade{position:absolute;inset:0 0 auto 0;height:118px;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(239,234,226,.97) 0%,rgba(239,234,226,.82) 55%,rgba(239,234,226,0) 100%);}
 .ip-status{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;height:46px;padding:4px 17px 0 27px;color:#000;font-size:14px;font-weight:600;letter-spacing:-.01em;}
-.ip-sys{display:flex;align-items:center;gap:4px;}
-.ip-sys svg{height:10.5px;width:auto;display:block;}
+.ip-sys{display:flex;align-items:center;gap:5px;}
+.ip-sys svg{display:block;flex:none;width:auto;height:11px;fill:currentColor;stroke:none;shape-rendering:geometricPrecision;}
+.ip-bat{display:inline-flex;align-items:center;gap:1px;}
+.ip-bat-body{position:relative;width:25px;height:12px;border-radius:4px;background:rgba(0,0,0,.3);overflow:hidden;}
+.ip-bat-lvl{position:absolute;top:0;bottom:0;left:0;width:79%;background:#000;}
+.ip-bat-n{position:relative;display:block;height:12px;line-height:12px;text-align:center;color:#fff;font-size:9.5px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.ip-bat-cap{width:2px;height:4.5px;border-radius:0 1.5px 1.5px 0;background:rgba(0,0,0,.35);}
 .wa-lg{background:rgba(255,255,255,.58);-webkit-backdrop-filter:blur(14px) saturate(1.7);backdrop-filter:blur(14px) saturate(1.7);border:1px solid rgba(255,255,255,.75);box-shadow:0 4px 14px -4px rgba(11,20,26,.18),inset 0 1px 0 rgba(255,255,255,.95);}
 .wa-nav{position:relative;z-index:4;display:flex;align-items:center;gap:6px;padding:2px 10px 8px;color:#111b21;}
 .wa-btn{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:50%;}
@@ -485,7 +490,7 @@ svg {
 .wa-mic svg,.wa-cam svg{width:16px;height:16px;}
 .wa-cam{color:#111b21;}
 
-/* ===== Pagos y señas — al nivel de prd-bk (checkout del flujo de reserva) ===== */
+/* ===== Pagos y anticipos — al nivel de prd-bk (checkout del flujo de reserva) ===== */
 .pay-ticket{display:grid;gap:6px;margin-top:2px;padding:10px 11px;border:1px solid var(--line);border-radius:10px;background:var(--soft);}
 .pay-trow{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:9.5px;color:var(--muted);}
 .pay-trow b{font-size:10px;font-weight:700;color:var(--ink);}
